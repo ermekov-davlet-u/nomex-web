@@ -1,0 +1,165 @@
+.orders-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.orders-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.orders-header h1 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.order-search {
+  padding: 0.75rem 1rem;
+  font-size: 16px;
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.order-search:focus {
+  border-color: #007bff;
+}
+
+.order-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.order-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid #eee;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.order-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.order-info h2 {
+  font-size: 18px;
+  margin-bottom: 0.5rem;
+  color: #222;
+}
+
+.order-info p {
+  margin: 4px 0;
+  color: #555;
+  font-size: 14px;
+}
+
+.order-flag {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-left: 1rem;
+}
+
+.empty {
+  text-align: center;
+  padding: 4rem 0;
+  color: #777;
+  font-size: 18px;
+}
+
+/* Обертка формы */
+.ordform-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок формы */
+.ordform-header {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+/* Ввод и текстовые поля */
+.ordform-group {
+  margin-bottom: 1.5rem;
+}
+
+.ordform-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.ordform-input,
+.ordform-textarea,
+.ordform-file-input {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  color: #555;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.ordform-input:focus,
+.ordform-textarea:focus {
+  border-color: #4e9ef1;
+  box-shadow: 0 0 5px rgba(78, 158, 241, 0.5);
+}
+
+.ordform-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.ordform-file-input {
+  border: none;
+  background-color: #f8f8f8;
+}
+
+.ordform-button {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #4e9ef1;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.ordform-button:hover {
+  background-color: #3b80c0;
+}
+
+.ordform-button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
