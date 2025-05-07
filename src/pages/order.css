@@ -1,165 +1,186 @@
-.orders-container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-family: "Segoe UI", sans-serif;
+.order-list {
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.orders-header {
+.tabs {
   display: flex;
-  flex-direction: column;
+  gap: 10px;
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.tab {
+  display: flex;
   align-items: center;
-  margin-bottom: 2rem;
+  gap: 8px;
+  padding: 10px 16px;
+  background: #f0f0f0;
+  border: none;
+  border-radius: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
 }
 
-.orders-header h1 {
-  margin-bottom: 1rem;
-  color: #333;
+.tab.active {
+  background: #007bff;
+  color: #fff;
 }
 
-.order-search {
-  padding: 0.75rem 1rem;
-  font-size: 16px;
-  width: 100%;
-  max-width: 400px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  outline: none;
-  transition: border 0.2s;
-}
-
-.order-search:focus {
-  border-color: #007bff;
-}
-
-.order-grid {
+.cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
 .order-card {
   background: #fff;
-  border-radius: 12px;
-  padding: 1.5rem;
-  border: 1px solid #eee;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+  padding: 16px;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  transition: transform 0.2s, box-shadow 0.2s;
+  flex-direction: column;
+  transition: transform 0.2s;
 }
 
 .order-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
 }
 
-.order-info h2 {
-  font-size: 18px;
-  margin-bottom: 0.5rem;
-  color: #222;
-}
-
-.order-info p {
-  margin: 4px 0;
-  color: #555;
-  font-size: 14px;
+.order-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
 }
 
 .order-flag {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  width: 32px;
+  height: 20px;
   object-fit: cover;
-  margin-left: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 0 3px rgba(0,0,0,0.2);
 }
 
-.empty {
-  text-align: center;
-  padding: 4rem 0;
-  color: #777;
-  font-size: 18px;
+.tracking-number {
+  font-size: 14px;
+  font-weight: 600;
+  color: #007bff;
 }
 
-/* Обертка формы */
-.ordform-container {
-  max-width: 600px;
-  margin: 2rem auto;
-  background-color: #fff;
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+.order-info .info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
 }
 
-/* Заголовок формы */
-.ordform-header {
-  text-align: center;
-  font-size: 2rem;
-  font-weight: bold;
+.label {
+  color: #666;
+  font-size: 14px;
+}
+
+.value {
+  font-weight: 600;
   color: #333;
-  margin-bottom: 1.5rem;
+  font-size: 14px;
+}
+/* order.css */
+.ordform-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Ввод и текстовые поля */
+.ordform-header {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+  font-weight: 600;
+}
+
+.ordform-space-y-4 {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 .ordform-group {
-  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .ordform-label {
   font-size: 1rem;
-  font-weight: 600;
   color: #555;
-  margin-bottom: 0.5rem;
-  display: block;
+  margin-bottom: 8px;
 }
 
 .ordform-input,
 .ordform-textarea,
 .ordform-file-input {
-  width: 100%;
-  padding: 0.8rem;
-  border-radius: 8px;
-  border: 1px solid #ddd;
+  padding: 12px;
   font-size: 1rem;
-  color: #555;
+  border-radius: 6px;
+  border: 1px solid #ddd;
   outline: none;
-  transition: all 0.3s ease;
+  transition: border-color 0.3s ease;
 }
 
 .ordform-input:focus,
-.ordform-textarea:focus {
-  border-color: #4e9ef1;
-  box-shadow: 0 0 5px rgba(78, 158, 241, 0.5);
+.ordform-textarea:focus,
+.ordform-file-input:focus {
+  border-color: #4a90e2;
 }
 
 .ordform-textarea {
-  min-height: 120px;
   resize: vertical;
-}
-
-.ordform-file-input {
-  border: none;
-  background-color: #f8f8f8;
+  min-height: 120px;
 }
 
 .ordform-button {
-  width: 100%;
-  padding: 0.8rem;
-  background-color: #4e9ef1;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
+  padding: 12px 20px;
   font-size: 1rem;
+  background-color: #e24a4a;
+  color: white;
+  border: none;
+  border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-}
-
-.ordform-button:hover {
-  background-color: #3b80c0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .ordform-button:disabled {
-  background-color: #ddd;
+  background-color: #d41a1a;
   cursor: not-allowed;
+}
+
+.ordform-button:hover:not(:disabled) {
+  background-color: #bd3535;
+}
+
+.ordform-file-input {
+  margin-top: 8px;
+}
+
+.ordform-file-input::file-selector-button {
+  background-color: #e24a4a;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.ordform-file-input::file-selector-button:hover {
+  background-color: #bd3535;
 }

@@ -3,6 +3,8 @@ import React from "react";
 import "./pages.css";
 import { useLoginMutation } from "../store/api/authApi";
 import { Link, useNavigate } from "react-router-dom";
+import { login } from "../store/slice/authSlice";
+import { useDispatch } from "react-redux";
 
 export function LoginForm() {
 	const [email, setEmail] = React.useState("");
@@ -10,18 +12,20 @@ export function LoginForm() {
 	const [errors, setErrors] = React.useState({ email: "", password: "" });
 	const [showPassword, setShowPassword] = React.useState(false);
 	const [loginUser] = useLoginMutation();
-	const navigate = useNavigate()
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
 	const handleLogin = async () => {
 		if (errors.email || errors.password || !email || !password) return;
+		
 
 		try {
 			const response = await loginUser({ email, password }).unwrap();
 			if (response.success) {
 				localStorage.setItem("accessToken", response.accessToken);
 				localStorage.setItem("refreshToken", response.refreshToken);
-				console.log("Успешный вход");
-				navigate("/OrderList");
+				dispatch(login());
+				navigate("/orders");
 			}
 		} catch (err) {
 			console.error("Ошибка входа:", err);

@@ -9,20 +9,43 @@ import { BrowserRouter } from "react-router-dom";
 import RegisterForm from "./pages/RegisterForm";
 import OrderList from "./pages/Orders";
 import CreateOrderForm from "./pages/CreateOrderForm";
+import Header from "./components/Header";
+import RecipientList from "./pages/Recipient";
+import AddRecipientForm from "./pages/RecipientForm";
 
 function App() {
   return (
     <BrowserRouter>
+    <Header></Header>
       <AuthProvider>
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<RegisterForm />} />
-          <Route path="/OrderList" element={<OrderList />} />
-          <Route path="/create-order" element={<CreateOrderForm />} />
-          <Route path="/"
+          <Route path="/orders"
             element={
               <ProtectedRoute>
-                <Dashboard />
+                <OrderList />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/create-order"
+            element={
+              <ProtectedRoute>
+                <CreateOrderForm />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/recipient"
+            element={
+              <ProtectedRoute>
+                <RecipientList />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/create-recipient"
+            element={
+              <ProtectedRoute>
+                <AddRecipientForm />
               </ProtectedRoute>
             }
           />
