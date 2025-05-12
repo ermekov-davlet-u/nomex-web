@@ -1,6 +1,6 @@
 .order-list {
   padding: 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .tabs {
@@ -24,7 +24,7 @@
 }
 
 .tab.active {
-  background: #007bff;
+  background: #ff0000;
   color: #fff;
 }
 
@@ -46,6 +46,7 @@
 
 .order-card:hover {
   transform: translateY(-4px);
+  cursor: pointer;
 }
 
 .order-card-header {
@@ -60,7 +61,7 @@
   height: 20px;
   object-fit: cover;
   border-radius: 4px;
-  box-shadow: 0 0 3px rgba(0,0,0,0.2);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
 }
 
 .tracking-number {
@@ -183,4 +184,23 @@
 
 .ordform-file-input::file-selector-button:hover {
   background-color: #bd3535;
+}
+
+.ordform-select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: #fff;
+  width: 100%;
+}
+
+.ordform-loading {
+  font-size: 14px;
+  color: #777;
+}
+
+.ordform-error {
+  font-size: 14px;
+  color: red;
 }

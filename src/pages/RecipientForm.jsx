@@ -36,7 +36,7 @@ const AddRecipientForm = () => {
     <div className="add-recipient-form">
       <h2>Добавить получателя</h2>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="form-group-rec">
           <label>Имя</label>
           <input
             type="text"
@@ -45,7 +45,7 @@ const AddRecipientForm = () => {
             onChange={handleChange}
           />
         </div>
-        <div>
+        <div className="form-group-rec">
           <label>Фамилия</label>
           <input
             type="text"
@@ -54,7 +54,7 @@ const AddRecipientForm = () => {
             onChange={handleChange}
           />
         </div>
-        <div>
+        <div className="form-group-rec">
           <label>Телефон</label>
           <input
             type="text"
@@ -63,7 +63,25 @@ const AddRecipientForm = () => {
             onChange={handleChange}
           />
         </div>
-        <div>
+        <div className="form-group-rec">
+          <label>ID паспорта</label>
+          <input
+            type="text"
+            name="ppt_id"
+            value={formData.phone}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-group-rec">
+          <label>ИНН</label>
+          <input
+            type="text"
+            name="ppt_inn"
+            value={formData.phone}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-group-rec">
           <label>Дата рождения</label>
           <input
             type="date"
@@ -72,7 +90,7 @@ const AddRecipientForm = () => {
             onChange={handleChange}
           />
         </div>
-        <div>
+        <div className="form-group-rec">
           <label>Адрес</label>
           <input
             type="text"
@@ -81,7 +99,7 @@ const AddRecipientForm = () => {
             onChange={handleChange}
           />
         </div>
-        <div>
+        <div className="form-group-rec">
           <label>Клиентский код</label>
           <input
             type="text"

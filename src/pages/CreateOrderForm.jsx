@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import { useCreateOrEditOrderMutation } from "../store/api/orderApi";
 import "./order.css"; // Подключаем наш CSS
+import { useGetCountriesQuery, useGetCurrenciesQuery, useGetRecipientsQuery, useGetCategoriesQuery } from "../store/api/recipientApi";
 
 const CreateOrderForm = () => {
+    const { data: recipients, error: recipientsError, isLoading: isLoadingRecipients } = useGetRecipientsQuery();
+    const { data: countries, error: countriesError, isLoading: isLoadingCountries } = useGetCountriesQuery();
+    const { data: category, error: categoryError, isLoading: isLoadingCategory } = useGetCategoriesQuery();
+    const { data: currency, error: currencyError, isLoading: isLoadingCurrency } = useGetCurrenciesQuery();
     const [form, setForm] = useState({
         trackingNumber: "",
         cost: "",
@@ -66,6 +71,101 @@ const CreateOrderForm = () => {
             <h2 className="ordform-header">📦 Создание заказа</h2>
             <form onSubmit={handleSubmit} className="ordform-space-y-4">
                 <div className="ordform-group">
+                    <label className="ordform-label">Получатель</label>
+                    {isLoadingRecipients ? (
+                        <div className="ordform-loading">Загрузка...</div>
+                    ) : recipientsError ? (
+                        <div className="ordform-error">Ошибка загрузки</div>
+                    ) : (
+                        <select
+                            value={form.selectedReciever.guid}
+                            onChange={(e) =>
+                                setForm({ ...form, selectedReciever: { guid: e.target.value } })
+                            }
+                            className="ordform-select"
+                        >
+                            <option value="">Выберите получателя</option>
+                            {recipients.map((r) => (
+                                <option key={r.guid} value={r.guid}>
+                                    {r.name}
+                                </option>
+                            ))}
+                        </select>
+                    )}
+                </div>
+
+                <div className="ordform-group">
+                    <label className="ordform-label">Страна</label>
+                    {isLoadingCountries ? (
+                        <div className="ordform-loading">Загрузка...</div>
+                    ) : countriesError ? (
+                        <div className="ordform-error">Ошибка загрузки</div>
+                    ) : (
+                        <select
+                            value={form.selectedCountry.guid}
+                            onChange={(e) =>
+                                setForm({ ...form, selectedCountry: { guid: e.target.value } })
+                            }
+                            className="ordform-select"
+                        >
+                            <option value="">Выберите страну</option>
+                            {countries.map((c) => (
+                                <option key={c.guid} value={c.guid}>
+                                    {c.country}
+                                </option>
+                            ))}
+                        </select>
+                    )}
+                </div>
+                <div className="ordform-group">
+                    <label className="ordform-label">Валюта</label>
+                    {isLoadingCurrency ? (
+                        <div className="ordform-loading">Загрузка...</div>
+                    ) : currencyError ? (
+                        <div className="ordform-error">Ошибка загрузки</div>
+                    ) : (
+                        <select
+                            value={form.selectedCurrency.guid}
+                            onChange={(e) =>
+                                setForm({ ...form, selectedCurrency: { guid: e.target.value } })
+                            }
+                            className="ordform-select"
+                        >
+                            <option value="">Выберите валюту</option>
+                            {currency.map((c) => (
+                                <option key={c.guid} value={c.guid}>
+                                    {c.name}
+                                </option>
+                            ))}
+                        </select>
+                    )}
+                </div>
+
+                <div className="ordform-group">
+                    <label className="ordform-label">Категория</label>
+                    {isLoadingCategory ? (
+                        <div className="ordform-loading">Загрузка...</div>
+                    ) : categoryError ? (
+                        <div className="ordform-error">Ошибка загрузки</div>
+                    ) : (
+                        <select
+                            value={form.selectedCategory.guid}
+                            onChange={(e) =>
+                                setForm({ ...form, selectedCategory: { guid: e.target.value } })
+                            }
+                            className="ordform-select"
+                        >
+                            <option value="">Выберите категорию</option>
+                            {category.map((c) => (
+                                <option key={c.guid} value={c.guid}>
+                                    {c.name}
+                                </option>
+                            ))}
+                        </select>
+                    )}
+                </div>
+
+                <div className="ordform-group">
                     <label className="ordform-label">Трек-номер</label>
                     <input
                         type="text"
@@ -75,7 +175,6 @@ const CreateOrderForm = () => {
                         placeholder="1234567890"
                     />
                 </div>
-
                 <div className="ordform-group">
                     <label className="ordform-label">Стоимость</label>
                     <input

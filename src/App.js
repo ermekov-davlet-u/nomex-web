@@ -12,11 +12,14 @@ import CreateOrderForm from "./pages/CreateOrderForm";
 import Header from "./components/Header";
 import RecipientList from "./pages/Recipient";
 import AddRecipientForm from "./pages/RecipientForm";
+import ProfilePage from "./pages/Profile";
+import BuyForMeForm from "./pages/BuyForMe";
+import AddressList from "./pages/Adress";
 
 function App() {
   return (
     <BrowserRouter>
-    <Header></Header>
+      <Header></Header>
       <AuthProvider>
         <Routes>
           <Route path="/login" element={<Login />} />
@@ -25,6 +28,27 @@ function App() {
             element={
               <ProtectedRoute>
                 <OrderList />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/profile"
+            element={
+              <ProtectedRoute>
+                <ProfilePage />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/address"
+            element={
+              <ProtectedRoute>
+                <AddressList />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/BuyForMeForm"
+            element={
+              <ProtectedRoute>
+                <BuyForMeForm />
               </ProtectedRoute>
             }
           />

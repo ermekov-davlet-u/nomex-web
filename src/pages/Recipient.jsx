@@ -14,11 +14,11 @@ const RecipientList = () => {
           {recipients.map((recipient) => (
             <div key={recipient.guid} className="recipient-card">
               <div className="card-header">
-                <h3>{recipient.first_name} {recipient.last_name}</h3>
+                <h3>{recipient.name}</h3>
               </div>
               <div className="card-body">
-                <p>Телефон: {recipient.phone}</p>
-                <p>Дата рождения: {recipient.birth_date}</p>
+                <p>ID паспорта: {recipient.ppt_id}</p>
+                <p>ИНН: {recipient.ppt_inn}</p>
                 <p>Адрес: {recipient.address}</p>
                 <p>Клиентский код: {recipient.client_code}</p>
               </div>
