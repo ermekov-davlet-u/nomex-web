@@ -1,10 +1,27 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { IoPersonOutline, IoKeyOutline, IoPeopleOutline, IoRibbonOutline, IoShieldCheckmarkOutline, IoChevronForwardOutline } from "react-icons/io5";
+import {
+    IoPersonOutline,
+    IoKeyOutline,
+    IoPeopleOutline,
+    IoRibbonOutline,
+    IoShieldCheckmarkOutline,
+    IoChevronForwardOutline,
+} from "react-icons/io5";
 import { MdStar } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { logout } from "../store/slice/authSlice";
 
 const ProfilePage = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const handleLogout = () => {
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("refreshToken");
+        dispatch(logout()); // твой logout reducer
+        navigate("/login");
+    };
 
     return (
         <div className="profile-container">
@@ -29,6 +46,12 @@ const ProfilePage = () => {
                 <ProfileOption icon={<IoPeopleOutline />} label="Получатели" onClick={() => navigate("/recievers")} />
                 <ProfileOption icon={<IoRibbonOutline />} label="Заполнить персональные данные" onClick={() => navigate("/personal-info")} />
                 <ProfileOption icon={<IoShieldCheckmarkOutline />} label="Договоры и правила" />
+            </div>
+
+            <div className="logout-button-wrapper">
+                <button className="logout-button" onClick={handleLogout}>
+                    Выйти
+                </button>
             </div>
         </div>
     );

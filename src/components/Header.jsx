@@ -18,6 +18,9 @@ const Header = () => {
         <Link to="/recipient" className={location.pathname === "/recipient" ? "active" : ""}>Получатели</Link>
         <Link to="/BuyForMeForm" className={location.pathname === "/BuyForMeForm" ? "active" : ""}>Купить вместо меня</Link>
         <Link to="/create-recipient" className={location.pathname === "/create-recipient" ? "active" : ""}>Добавить получателя </Link>
+        <Link to="/calculator" className={location.pathname === "/calculator" ? "active" : ""}>Калькулятор </Link>
+        <Link to="/shops" className={location.pathname === "/shops" ? "active" : ""}>Магазин </Link>
+        <Link to="/personal-info" className={location.pathname === "/personal-info" ? "active" : ""}>Персональные данные</Link>
       </nav>
       <Link to="/profile" className={location.pathname === "/profilepage" ? "active" : ""} >
         <FaUserCircle size={28} />

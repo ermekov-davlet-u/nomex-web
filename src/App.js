@@ -15,6 +15,10 @@ import AddRecipientForm from "./pages/RecipientForm";
 import ProfilePage from "./pages/Profile";
 import BuyForMeForm from "./pages/BuyForMe";
 import AddressList from "./pages/Adress";
+import Calculator from "./pages/Calculator";
+import PersonalInfoDetailWeb from "./pages/Personalnfo";
+import Shops from "./pages/Shops";
+import ConfirmActivCode from "./pages/ConfirmActivCode";
 
 function App() {
   return (
@@ -38,6 +42,33 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route path="/confirm-code"
+            element={
+              <ConfirmActivCode />
+            }
+          />
+          <Route path="/personal-info"
+            element={
+              <ProtectedRoute>
+                <PersonalInfoDetailWeb />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/shops"
+            element={
+              <ProtectedRoute>
+                <Shops />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/calculator"
+            element={
+              <ProtectedRoute>
+                <Calculator />
+              </ProtectedRoute>
+            }
+          />
+
           <Route path="/address"
             element={
               <ProtectedRoute>

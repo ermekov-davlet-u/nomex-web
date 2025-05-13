@@ -20,7 +20,21 @@ export const authApi = createApi({
                 body: { email, phone, password },
             }),
         }),
+        checkActivationCode: builder.query({
+            query: ({ activationCode, email }) => ({
+                url: "/app/auth/checkActivationCode",
+                method: "GET",
+                params: { activationCode, email },
+            }),
+        }),
+        resendActivationCode: builder.mutation({
+            query: ({ email }) => ({
+                url: "/app/auth/resendActivationCode",
+                method: "POST",
+                body: { email },
+            }),
+        }),
     }),
 });
 
-export const { useLoginMutation, useRegisterMutation } = authApi;
+export const { useLoginMutation, useRegisterMutation, useLazyCheckActivationCodeQuery, useResendActivationCodeMutation } = authApi;

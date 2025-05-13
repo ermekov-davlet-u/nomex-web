@@ -25,7 +25,13 @@ export const orderApi = createApi({
 				body: formData,
 			}),
 		}),
+		issueOrder: builder.mutation({
+			query: ({ orderId }) => ({
+				url: `/api/app/order/issue/${orderId}`,
+				method: "POST",
+			}),
+		}),
 	}),
 });
 
-export const { useGetOrdersQuery, useCreateOrEditOrderMutation } = orderApi;
+export const { useGetOrdersQuery, useCreateOrEditOrderMutation, useIssueOrderMutation } = orderApi;

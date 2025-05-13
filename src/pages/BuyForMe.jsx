@@ -45,8 +45,8 @@ const BuyForMeForm = () => {
                     link: item.link.trim() === "",
                     price: item.price === "",
                     amount: item.amount === "",
-                    selectedCurrency: !item.selectedCurrency?.guid,
-                    selectedCountry: !item.selectedCountry?.guid,
+                    selectedCurrency: !item.selectedCurrency,
+                    selectedCountry: !item.selectedCountry,
                 };
                 if (Object.values(itemErrors).some(Boolean)) {
                     acc[item.id] = itemErrors;
@@ -78,15 +78,15 @@ const BuyForMeForm = () => {
             size: item.size.trim(),
             color: item.color.trim(),
             comment: item.comment.trim(),
-            currency_guid: item?.selectedCurrency?.guid || null,
-            country_guid: item?.selectedCountry?.guid || formData.selectedCountry.guid,
+            currency_guid: item?.selectedCurrency || null,
+            country_guid: item?.selectedCountry || formData.selectedCountry,
             promocode: item?.promocode.trim() || formData.promocode.trim(),
         }));
 
         const requestData = {
             promocode: formData.promocode.trim(),
             comment: formData.comment.trim(),
-            country_guid: formData.selectedCountry?.guid || null,
+            country_guid: formData.selectedCountry || null,
             reciever_guid: formData.reciever_guid || null,
             invoice_guid: formData.invoice_guid,
             type,
@@ -145,8 +145,8 @@ const BuyForMeForm = () => {
         }
     };
 
-    const handleInputChange = (field, value) => {
-        setFormData((prevState) => ({ ...prevState, [field]: value }));
+    const handleInputChange = (e) => {
+        setFormData((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
     };
 
     const handleListChange = (id, field, value) => {
@@ -186,7 +186,51 @@ const BuyForMeForm = () => {
     return (
         <div style={styles.container}>
 
+            <div className="ordform-group">
+                <label className="ordform-label">Получатель</label>
+                {isLoadingRecipients ? (
+                    <div className="ordform-loading">Загрузка...</div>
+                ) : recipientsError ? (
+                    <div className="ordform-error">Ошибка загрузки</div>
+                ) : (
+                    <select
+                        value={formData.selectedReciever}
+                        onChange={handleInputChange}
+                        className="ordform-select"
+                        name="selectedReciever"
+                    >
+                        <option value="">Выберите получателя</option>
+                        {recipients.map((r) => (
+                            <option key={r.guid} value={r.guid}>
+                                {r.name}
+                            </option>
+                        ))}
+                    </select>
+                )}
+            </div>
 
+            <div className="ordform-group">
+                <label className="ordform-label">Страна</label>
+                {isLoadingCountries ? (
+                    <div className="ordform-loading">Загрузка...</div>
+                ) : countriesError ? (
+                    <div className="ordform-error">Ошибка загрузки</div>
+                ) : (
+                    <select
+                        value={formData.selectedCountry}
+                        onChange={handleInputChange}
+                        className="ordform-select"
+                        name="selectedCountry"
+                    >
+                        <option value="">Выберите страну</option>
+                        {countries.map((c) => (
+                            <option key={c.guid} value={c.guid}>
+                                {c.country}
+                            </option>
+                        ))}
+                    </select>
+                )}
+            </div>
             {formData.lists.map((item, index) => (
                 <div key={item.id} style={styles.formGroup}>
                     <label style={styles.label}>Товар {index + 1}</label>

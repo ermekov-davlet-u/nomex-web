@@ -1,12 +1,13 @@
 import React from "react";
 import "./pages.css";
 import { useRegisterMutation } from "../store/api/authApi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export function RegisterForm() {
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
     const [phone, setPhone] = React.useState("");
+    const navigate = useNavigate()
     const [confirmPassword, setConfirmPassword] = React.useState("");
     const [errors, setErrors] = React.useState({ email: "", password: "", confirmPassword: "" });
     const [showPassword, setShowPassword] = React.useState(false);
@@ -21,6 +22,7 @@ export function RegisterForm() {
 
         try {
             const response = await register({ email, phone, password }).unwrap();
+            navigate("/confirm-code")
             console.log("Успешная регистрация:", response);
             // редирект или логика авторизации
         } catch (err) {
