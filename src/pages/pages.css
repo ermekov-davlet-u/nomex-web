@@ -793,3 +793,100 @@ input[type="number"] {
     transform: translateX(0);
   }
 }
+
+.main-wrapper {
+  background-color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+}
+
+/* БАННЕР */
+.banner {
+  background: linear-gradient(135deg, #ff4b4b, #2d2d2d);
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+}
+.banner h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+.banner p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+.banner-btn {
+  background: #fff;
+  color: #ff4b4b;
+  padding: 12px 24px;
+  font-weight: bold;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.banner-btn:hover {
+  background: #eee;
+}
+
+/* КАРТОЧКИ */
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 40px 20px;
+  gap: 20px;
+  background-color: #f7f7f7;
+}
+.feature-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  width: 200px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+.feature-icon {
+  font-size: 36px;
+  color: #ff4b4b;
+  margin-bottom: 10px;
+}
+.feature-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.feature-card a {
+  color: #ff4b4b;
+  text-decoration: none;
+  font-weight: bold;
+}
+.feature-card a:hover {
+  text-decoration: underline;
+}
+
+/* НИЖНЕЕ МЕНЮ */
+.quick-links {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  background: #eee;
+}
+.quick-links a {
+  text-decoration: none;
+  color: #333;
+  text-align: center;
+  font-size: 14px;
+}
+.quick-links a span {
+  display: block;
+  margin-top: 4px;
+}
+
+/* ФУТЕР */
+.footer {
+  text-align: center;
+  padding: 20px;
+  background: #2d2d2d;
+  color: #ccc;
+  font-size: 14px;
+}

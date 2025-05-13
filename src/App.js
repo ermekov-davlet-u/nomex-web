@@ -19,6 +19,7 @@ import Calculator from "./pages/Calculator";
 import PersonalInfoDetailWeb from "./pages/Personalnfo";
 import Shops from "./pages/Shops";
 import ConfirmActivCode from "./pages/ConfirmActivCode";
+import Home from "./pages/Home";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
       <AuthProvider>
         <Routes>
           <Route path="/login" element={<Login />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/register" element={<RegisterForm />} />
           <Route path="/orders"
             element={

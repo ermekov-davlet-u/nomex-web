@@ -8,9 +8,9 @@ const Header = () => {
 
   return (
     <header className="header">
-      <div className="header__left">
+      <Link to="/home" className="header__left">
         <img src="/logo192.png" alt="Logo" className="header__logo" />
-      </div>
+      </Link>
       <nav className="header__nav">
         <Link to="/orders" className={location.pathname === "/orders" ? "active" : ""}>Заказы</Link>
         <Link to="/address" className={location.pathname === "/address" ? "active" : ""}>Страны</Link>
