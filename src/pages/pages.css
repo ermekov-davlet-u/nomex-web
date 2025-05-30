@@ -796,7 +796,7 @@ input[type="number"] {
 
 .main-wrapper {
   background-color: #fff;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", sans-serif;
   color: #333;
 }
 
@@ -844,7 +844,7 @@ input[type="number"] {
   padding: 20px;
   width: 200px;
   text-align: center;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 }
 .feature-icon {
   font-size: 36px;
@@ -889,4 +889,107 @@ input[type="number"] {
   background: #2d2d2d;
   color: #ccc;
   font-size: 14px;
+}
+
+.contacts-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 1rem;
+  background-color: var(--background);
+}
+
+.contacts-wrapper {
+  width: 100%;
+  max-width: 700px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+}
+
+.contacts-title {
+  font-size: 28px;
+  color: var(--black);
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.contacts-subtitle {
+  font-size: 16px;
+  color: var(--gray);
+  margin-bottom: 2rem;
+}
+
+.contacts-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contacts-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.contacts-field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.contacts-field label {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--black);
+}
+
+.contacts-field input,
+.contacts-field textarea {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  color: var(--black);
+  background-color: #f9f9f9;
+}
+
+.contacts-field input:focus,
+.contacts-field textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  background-color: #fff;
+}
+
+.contacts-button {
+  align-self: flex-end;
+  padding: 0.75rem 2rem;
+  font-size: 16px;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.contacts-button:hover {
+  background-color: #e0384a;
+}
+
+.contacts-info {
+  margin-top: 2rem;
+  border-top: 1px solid #eee;
+  padding-top: 1.5rem;
+}
+
+.contacts-info h3 {
+  color: var(--black);
+  margin-bottom: 1rem;
+}
+
+.contacts-info p {
+  color: var(--gray);
+  margin-bottom: 0.5rem;
 }

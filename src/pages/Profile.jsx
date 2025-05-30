@@ -42,16 +42,11 @@ const ProfilePage = () => {
             <div className="profile-options">
                 <ProfileOption icon={<IoPersonOutline />} label="Личная информация" />
                 <ProfileOption icon={<IoKeyOutline />} label="Изменить пароль" />
-                <ProfileOption icon={<IoPeopleOutline />} label="Купить вместо меня" onClick={() => navigate("/buy-for-me")} />
-                <ProfileOption icon={<IoPeopleOutline />} label="Получатели" onClick={() => navigate("/recievers")} />
+                <ProfileOption icon={<IoPeopleOutline />} label="Купить вместо меня" onClick={() => navigate("/BuyForMeForm")} />
+                <ProfileOption icon={<IoPeopleOutline />} label="Получатели" onClick={() => navigate("/recipient")} />
                 <ProfileOption icon={<IoRibbonOutline />} label="Заполнить персональные данные" onClick={() => navigate("/personal-info")} />
                 <ProfileOption icon={<IoShieldCheckmarkOutline />} label="Договоры и правила" />
-            </div>
-
-            <div className="logout-button-wrapper">
-                <button className="logout-button" onClick={handleLogout}>
-                    Выйти
-                </button>
+                <ProfileOption icon={<IoRibbonOutline />} label="Выйти" onClick={() => { handleLogout() }} />
             </div>
         </div>
     );

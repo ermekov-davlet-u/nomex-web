@@ -23,7 +23,7 @@ const MainPage = () => {
                 <div className="feature-card">
                     <FaGlobe className="feature-icon" />
                     <h3>Страны</h3>
-                    <Link to="/countries">Открыть</Link>
+                    <Link to="/address">Открыть</Link>
                 </div>
                 <div className="feature-card">
                     <FaCalculator className="feature-icon" />
@@ -38,7 +38,7 @@ const MainPage = () => {
             </section>
 
             {/* НИЖНЕЕ МЕНЮ */}
-            <div style={{maxWidth: "1080px", margin: "0 auto"}}>
+            <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
                 <ProfilePage />
             </div>
             <section className="quick-links">

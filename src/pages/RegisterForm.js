@@ -47,8 +47,8 @@ export function RegisterForm() {
         setPassword(value);
         if (!value) {
             setErrors((prev) => ({ ...prev, password: "Пароль обязателен" }));
-        } else if (value.length < 8) {
-            setErrors((prev) => ({ ...prev, password: "Минимум 8 символов" }));
+        } else if (value.length < 2) {
+            setErrors((prev) => ({ ...prev, password: "Минимум 2 символов" }));
         } else {
             setErrors((prev) => ({ ...prev, password: "" }));
         }

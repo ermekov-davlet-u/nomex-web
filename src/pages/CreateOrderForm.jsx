@@ -196,6 +196,16 @@ const CreateOrderForm = () => {
                         placeholder="Amazon, eBay..."
                     />
                 </div>
+                <div className="ordform-group">
+                    <label className="ordform-label">Ссылка на товар</label>
+                    <input
+                        type="text"
+                        value={form.her}
+                        onChange={(e) => setForm({ ...form, her: e.target.value })}
+                        className="ordform-input"
+                        placeholder="https:"
+                    />
+                </div>
 
                 <div className="ordform-group">
                     <label className="ordform-label">Описание</label>

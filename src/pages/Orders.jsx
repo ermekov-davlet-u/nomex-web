@@ -60,6 +60,10 @@ const OrderList = () => {
 								<span className="value">{order.shop}</span>
 							</div>
 							<div className="info-row">
+								<span className="label">Страна:</span>
+								<span className="value">{order.country}</span>
+							</div>
+							<div className="info-row">
 								<span className="label">Дата:</span>
 								<span className="value">{order.date}</span>
 							</div>

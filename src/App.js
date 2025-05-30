@@ -20,6 +20,9 @@ import PersonalInfoDetailWeb from "./pages/Personalnfo";
 import Shops from "./pages/Shops";
 import ConfirmActivCode from "./pages/ConfirmActivCode";
 import Home from "./pages/Home";
+import ContactsPage from "./pages/ContactsPage";
+import ChooseFizUr from "./pages/ChooseFizUr";
+import CompanyDetail from "./pages/CompanyDetail";
 
 function App() {
   return (
@@ -49,11 +52,25 @@ function App() {
               <ConfirmActivCode />
             }
           />
+          <Route path="/company-detail"
+            element={
+              <CompanyDetail />
+            }
+          />
+
+          <Route path="/choose-role"
+            element={
+              <ChooseFizUr />
+            }
+          />
+          <Route path="/contact"
+            element={
+              <ContactsPage />
+            }
+          />
           <Route path="/personal-info"
             element={
-              <ProtectedRoute>
-                <PersonalInfoDetailWeb />
-              </ProtectedRoute>
+              <PersonalInfoDetailWeb />
             }
           />
           <Route path="/shops"

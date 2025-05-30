@@ -17,7 +17,7 @@ export function LoginForm() {
 
 	const handleLogin = async () => {
 		if (errors.email || errors.password || !email || !password) return;
-		
+
 
 		try {
 			const response = await loginUser({ email, password }).unwrap();
@@ -49,8 +49,8 @@ export function LoginForm() {
 		setPassword(value);
 		if (!value) {
 			setErrors((prev) => ({ ...prev, password: "Пароль обязателен" }));
-		} else if (value.length <= 5) {
-			setErrors((prev) => ({ ...prev, password: "Минимум 8 символов" }));
+		} else if (value.length <= 2) {
+			setErrors((prev) => ({ ...prev, password: "Минимум 2 символов" }));
 		} else {
 			setErrors((prev) => ({ ...prev, password: "" }));
 		}
