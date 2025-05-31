@@ -22,7 +22,11 @@ export function RegisterForm() {
 
         try {
             const response = await register({ email, phone, password }).unwrap();
-            navigate("/confirm-code")
+            navigate("/confirm-code", {
+                state: {
+                    email: email
+                }
+            })
             console.log("Успешная регистрация:", response);
             // редирект или логика авторизации
         } catch (err) {

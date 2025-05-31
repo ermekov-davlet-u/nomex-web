@@ -1,8 +1,10 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { IoPersonCircleOutline, IoBusinessOutline, IoChevronForward } from "react-icons/io5";
 
 export default function ChooseFizUr() {
 	const navigate = useNavigate();
+	const location = useLocation();
+	const email = location.state?.email || "";
 
 	return (
 		<div style={styles.container}>
@@ -11,14 +13,22 @@ export default function ChooseFizUr() {
 				<p style={styles.subtitle}>Заполните данные</p>
 
 				{/* Физическое лицо */}
-				<div style={styles.option} onClick={() => navigate("/personal-info")}>
+				<div style={styles.option} onClick={() => navigate("/personal-info", {
+					state: {
+						email: email
+					}
+				})}>
 					<IoPersonCircleOutline size={32} style={styles.iconPrimary} />
 					<span style={styles.optionText}>Физическое лицо</span>
 					<IoChevronForward size={24} style={styles.iconSecondary} />
 				</div>
 
 				{/* Компания */}
-				<div style={styles.option} onClick={() => navigate("/company-detail")}>
+				<div style={styles.option} onClick={() => navigate("/company-detail", {
+					state: {
+						email: email
+					}
+				})}>
 					<IoBusinessOutline size={32} style={styles.iconPrimary} />
 					<span style={styles.optionText}>Компания</span>
 					<IoChevronForward size={24} style={styles.iconSecondary} />

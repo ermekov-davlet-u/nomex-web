@@ -8,6 +8,7 @@ import {
 } from "react-icons/fa";
 import { useSubmitUserDataMutation } from "../store/api/userApi";
 import "./pages.css";
+import { useLocation } from "react-router-dom";
 
 export default function PersonalInfoDetailWeb() {
     const [firstName, setFirstName] = useState("");
@@ -20,6 +21,8 @@ export default function PersonalInfoDetailWeb() {
     const [visaScan, setVisaScan] = useState(null);
     const [inputErrors, setInputErrors] = useState({});
     const [submitUserData] = useSubmitUserDataMutation();
+    const location = useLocation();
+    const email = location.state?.email || "";
 
     const handleFileChange = (e, setFile) => {
         const file = e.target.files[0];
@@ -51,6 +54,7 @@ export default function PersonalInfoDetailWeb() {
                 passportBack,
                 visaScan,
                 isLocal,
+                email: email
             }).unwrap();
             alert("Данные успешно отправлены!");
         } catch (err) {
