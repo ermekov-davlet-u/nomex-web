@@ -54,7 +54,7 @@ export default function PersonalInfoDetailWeb() {
                 passportBack,
                 visaScan,
                 isLocal,
-                email: email
+                ...(email ? { email } : {})
             }).unwrap();
             alert("Данные успешно отправлены!");
         } catch (err) {

@@ -27,7 +27,7 @@ export const userApi = createApi({
                 isLocal,
             }) => {
                 const formData = new FormData();
-                formData.append("email", email);
+                if (email) { formData.append("email", email); }
                 formData.append("last_name", lastName);
                 formData.append("first_name", firstName);
                 formData.append("ppt_inn", inn);
@@ -43,7 +43,7 @@ export const userApi = createApi({
                     formData.append("visa", visaScan, "visa_scan.jpg");
 
                 return {
-                    url: "setUserData", // путь относительно baseUrl
+                    url: email ? "setUserData" : "editUserData", // путь относительно baseUrl
                     method: "POST",
                     body: formData,
                 };

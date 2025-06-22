@@ -12,6 +12,7 @@ const CreateOrderForm = () => {
         trackingNumber: "",
         cost: "",
         storeName: "",
+        linkOrder: "",
         note: "",
         orderGuid: null,
         selectedCountry: { guid: "" },
@@ -200,8 +201,8 @@ const CreateOrderForm = () => {
                     <label className="ordform-label">Ссылка на товар</label>
                     <input
                         type="text"
-                        value={form.her}
-                        onChange={(e) => setForm({ ...form, her: e.target.value })}
+                        value={form.linkOrder}
+                        onChange={(e) => setForm({ ...form, linkOrder: e.target.value })}
                         className="ordform-input"
                         placeholder="https:"
                     />
