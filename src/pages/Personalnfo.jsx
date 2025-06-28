@@ -7,8 +7,9 @@ import {
     FaUserShield,
 } from "react-icons/fa";
 import { useSubmitUserDataMutation } from "../store/api/userApi";
-import "./pages.css";
 import { useLocation } from "react-router-dom";
+import TextField from "../components/TextField";
+import "./pages.css";
 
 export default function PersonalInfoDetailWeb() {
     const [firstName, setFirstName] = useState("");
@@ -70,83 +71,72 @@ export default function PersonalInfoDetailWeb() {
                 Присоединяйтесь к тысячам пользователей, совершающих покупки в интернете
             </p>
 
-            <label className="checkbox-label">
-                <input
-                    type="checkbox"
-                    checked={isLocal}
-                    onChange={() => setIsLocal(!isLocal)}
-                />
-                Гражданин Кыргызстана
-            </label>
-
-            <div className={`form-group ${inputErrors.firstName ? "error" : ""}`}>
-                <label><FaUser /> Имя (латиницей)</label>
-                <input
-                    type="text"
+            <div className="personal-info_content">
+                <TextField
+                    label="Имя (латиницей)"
+                    // icon={<FaUser />}
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                     placeholder="Имя"
+                    error={inputErrors.firstName}
                 />
-            </div>
 
-            <div className={`form-group ${inputErrors.lastName ? "error" : ""}`}>
-                <label><FaUser /> Фамилия (латиницей)</label>
-                <input
-                    type="text"
+                <TextField
+                    label="Фамилия (латиницей)"
+                    // icon={<FaUser />}
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
                     placeholder="Фамилия"
+                    error={inputErrors.lastName}
                 />
-            </div>
 
-            <div className={`form-group ${inputErrors.idNumber ? "error" : ""}`}>
-                <label><FaIdCard /> ID или номер паспорта</label>
-                <input
-                    type="text"
+                <TextField
+                    label="ID или номер паспорта"
+                    // icon={<FaIdCard />}
                     value={idNumber}
                     onChange={(e) => setIdNumber(e.target.value)}
                     placeholder="ID или номер паспорта"
+                    error={inputErrors.idNumber}
                 />
-            </div>
 
-            <div className={`form-group ${inputErrors.inn ? "error" : ""}`}>
-                <label><FaUserShield /> ИНН</label>
-                <input
-                    type="text"
+                <TextField
+                    label="ИНН"
+                    // icon={<FaUserShield />}
                     value={inn}
                     onChange={(e) => setInn(e.target.value)}
                     placeholder="ИНН"
+                    error={inputErrors.inn}
                 />
-            </div>
 
-            <div className={`form-group ${inputErrors.passportFront ? "error" : ""}`}>
-                <label><FaPassport /> Лицевая сторона паспорта</label>
-                <input
+                <TextField
+                    label="Лицевая сторона паспорта"
+                    // icon={<FaPassport />}
                     type="file"
-                    accept="image/*"
                     onChange={(e) => handleFileChange(e, setPassportFront)}
-                />
-            </div>
-
-            <div className={`form-group ${inputErrors.passportBack ? "error" : ""}`}>
-                <label><FaPassport /> Обратная сторона паспорта</label>
-                <input
-                    type="file"
+                    error={inputErrors.passportFront}
                     accept="image/*"
-                    onChange={(e) => handleFileChange(e, setPassportBack)}
                 />
-            </div>
 
-            {!isLocal && (
-                <div className={`form-group ${inputErrors.visaScan ? "error" : ""}`}>
-                    <label><FaFileUpload /> Скан Visa</label>
-                    <input
+                <TextField
+                    label="Обратная сторона паспорта"
+                    // icon={<FaPassport />}
+                    type="file"
+                    onChange={(e) => handleFileChange(e, setPassportBack)}
+                    error={inputErrors.passportBack}
+                    accept="image/*"
+                />
+
+                {!isLocal && (
+                    <TextField
+                        label="Скан Visa"
+                        icon={<FaFileUpload />}
                         type="file"
-                        accept="image/*"
                         onChange={(e) => handleFileChange(e, setVisaScan)}
+                        error={inputErrors.visaScan}
+                        accept="image/*"
                     />
-                </div>
-            )}
+                )}
+            </div>
 
             <button onClick={handleSubmit} className="submit-button">
                 Продолжить

@@ -3,8 +3,6 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
-  background: #f8f9fa;
-  border-bottom: 1px solid #ccc;
   flex-wrap: wrap;
 }
 
@@ -41,4 +39,96 @@
 
 .header__icon {
   color: grey;
+}
+.layout {
+  display: flex;
+  min-height: calc(100vh - 60px); /* если Header ~60px высотой */
+  padding: 24px;
+  gap: 24px;
+  background: #fa8688;
+  height: calc(100vh - 48px);
+}
+
+.sidebar {
+  width: 250px;
+  background: #f4f5fa;
+  padding: 20px;
+  box-shadow: 2px 0 12px rgba(0, 0, 0, 0.1);
+  border-radius: 50px;
+  padding-top: 120px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  margin-bottom: 12px;
+  padding: 16px 30px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background-color: #ffffff;
+}
+
+.sidebar a {
+  color: #272727;
+  text-decoration: none;
+  font-weight: 200;
+  font-size: 14px;
+  display: block;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+.sidebar li:hover,
+.sidebar li.active {
+  background: #fa8688;
+}
+
+.sidebar li:hover > a {
+  color: #ffffff;
+}
+
+.content {
+  flex-grow: 1;
+  max-height: calc(100vh - 168px);
+  overflow: scroll;
+}
+
+.header_left {
+  display: flex;
+  align-items: center;
+  gap: 70px;
+}
+.header_left_btns {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.header_left_btn {
+  font-weight: 300;
+  font-family: "Unbounded";
+  color: #fa8688;
+}
+.text-flield {
+  padding: 18px 20px;
+  border-radius: 10px;
+  border: 1px solid #cccccc !important;
+  outline: none;
+  font-family: "Unbounded";
+  color: #7d8797;
+  font-weight: 300;
+  font-size: 14px;
+}
+.text-field_label {
+  font-weight: 400;
+  font-size: 14px;
+}
+.text-field_form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }

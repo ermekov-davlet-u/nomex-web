@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap");
 :root {
   --bg-color: #fff;
   --text-color: #333;
@@ -6,7 +7,7 @@
 }
 body {
   margin: 0;
-  font-family: sans-serif;
+  font-family: "Unbounded";
   background-color: #f2f2f2;
   color: var(--text-color);
 }
@@ -109,7 +110,7 @@ body {
 }
 
 .dashboard {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Unbounded", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   min-height: 100vh;
   background-color: #f4f6f8;
   color: #333;
@@ -291,7 +292,7 @@ h2 {
   max-width: 700px;
   margin: 0 auto;
   padding: 2rem 1rem;
-  font-family: "Segoe UI", sans-serif;
+  font-family: "Unbounded", "Segoe UI", sans-serif;
   color: #333;
 }
 
@@ -381,7 +382,7 @@ h2 {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
-  font-family: sans-serif;
+  font-family: "Unbounded", sans-serif;
 }
 
 .tabs {
@@ -441,14 +442,6 @@ h2 {
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 5px 10px;
-}
-
-input[type="number"] {
-  width: 100%;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  margin-top: 5px;
 }
 
 .info {
@@ -543,33 +536,20 @@ input[type="number"] {
 }
 
 .personal-info-form {
-  max-width: 600px;
+  max-width: 1280px;
   margin: 0 auto;
   background-color: #fff;
   padding: 32px;
   border-radius: 10px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
-  font-family: sans-serif;
+  font-family: "Unbounded", sans-serif;
   color: #333;
-}
-
-.personal-info-form h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
-  color: #fd4582;
 }
 
 .personal-info-form p {
   font-size: 14px;
   margin-bottom: 20px;
   color: #777;
-}
-
-.personal-info-form label {
-  font-weight: 500;
-  display: block;
-  margin-bottom: 6px;
-  color: #444;
 }
 
 .personal-info-form .form-group {
@@ -579,15 +559,6 @@ input[type="number"] {
 .personal-info-form .form-group.error input {
   border: 2px solid #fd4582;
   background-color: #fff4f6;
-}
-
-.personal-info-form input[type="text"],
-.personal-info-form input[type="file"] {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 14px;
 }
 
 .personal-info-form input[type="checkbox"] {
@@ -610,6 +581,19 @@ input[type="number"] {
 .personal-info-form .submit-button:hover {
   opacity: 0.9;
 }
+
+.personal-info_content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 36px;
+}
+
+.form-title {
+  font-size: 24px;
+  font-weight: 500;
+  color: #272727;
+}
+
 .shops-container {
   padding: 20px;
   max-width: 1200px;
@@ -711,7 +695,7 @@ input[type="number"] {
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  font-family: sans-serif;
+  font-family: "Unbounded", sans-serif;
   color: #111;
 }
 
@@ -796,7 +780,7 @@ input[type="number"] {
 
 .main-wrapper {
   background-color: #fff;
-  font-family: "Segoe UI", sans-serif;
+  font-family: "Unbounded", "Segoe UI", sans-serif;
   color: #333;
 }
 
