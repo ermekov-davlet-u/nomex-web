@@ -10,6 +10,8 @@ import { useSubmitUserDataMutation } from "../store/api/userApi";
 import { useLocation } from "react-router-dom";
 import TextField from "../components/TextField";
 import "./pages.css";
+import Button from "../components/Button";
+import Slider from "../components/Slider";
 
 export default function PersonalInfoDetailWeb() {
     const [firstName, setFirstName] = useState("");
@@ -138,9 +140,22 @@ export default function PersonalInfoDetailWeb() {
                 )}
             </div>
 
-            <button onClick={handleSubmit} className="submit-button">
-                Продолжить
-            </button>
+            <div className="personal-bottom">
+                <Button onClick={handleSubmit}>
+                    Продолжить
+                </Button>
+            </div>
+
+            <div className="person-footer">
+                <Slider
+                    label="Выберите значение:"
+                    value={35}
+                    onChange={(e) => { }}
+                    min={1}
+                    max={100}
+                    leftText="дБ"
+                />
+            </div>
         </div>
     );
 }

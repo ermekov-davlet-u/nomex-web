@@ -26,6 +26,7 @@ import ChooseFizUr from "./pages/ChooseFizUr";
 import CompanyDetail from "./pages/CompanyDetail";
 
 import "./App.css";
+import Country from "./pages/Country";
 
 function App() {
   return (
@@ -40,11 +41,20 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/home" element={<Home />} />
               <Route path="/register" element={<RegisterForm />} />
+              <Route path="/register" element={<RegisterForm />} />
               <Route
                 path="/orders"
                 element={
                   <ProtectedRoute>
                     <OrderList />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/country"
+                element={
+                  <ProtectedRoute>
+                    <Country />
                   </ProtectedRoute>
                 }
               />

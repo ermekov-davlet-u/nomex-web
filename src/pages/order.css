@@ -2,6 +2,10 @@
   padding: 20px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+.order {
+  display: grid;
+  grid-template-columns: 560px 1fr;
+}
 
 .tabs {
   display: flex;
@@ -29,16 +33,19 @@
 }
 
 .cards {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
   gap: 20px;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  max-height: 600px;
+  padding-right: 12px;
 }
 
 .order-card {
   background: #fff;
-  border-radius: 16px;
+  border-radius: 20px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
-  padding: 16px;
   display: flex;
   flex-direction: column;
   transition: transform 0.2s;
@@ -57,13 +64,13 @@
   margin-bottom: 12px;
 }
 
-.order-flag {
+/* .order-flag {
   width: 32px;
   height: 20px;
   object-fit: cover;
   border-radius: 4px;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
-}
+} */
 
 .tracking-number {
   font-size: 14px;
@@ -204,4 +211,182 @@
 .ordform-error {
   font-size: 14px;
   color: red;
+}
+
+.order_content {
+  padding: 48px;
+  background-color: white;
+  border-radius: 20px;
+}
+
+.order_content_header {
+}
+.order_content_num {
+}
+.actual_status {
+  display: flex;
+  justify-content: space-between;
+  gap: 86px;
+  padding: 60px 0;
+}
+.actual_status_right {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.actual_status_right_text {
+  font-family: Unbounded;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  padding-bottom: 26px;
+}
+.actual_status_right_bottom {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 8px;
+}
+.actual_status_right_bottom_start {
+  font-family: Unbounded;
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #cccccc;
+}
+.actual_status_right_bottom_actual {
+  font-family: Unbounded;
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+.actual_status_right_bottom_start {
+  font-family: Unbounded;
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #cccccc;
+}
+.actual_status_left {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.actual_status_left_title {
+  font-family: Unbounded;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+.actual_status_left_status {
+  font-family: Unbounded;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+.actual_status_left_date {
+  font-family: Unbounded;
+  font-weight: 300;
+  font-size: 10px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+.order_content_delivery {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 48px;
+}
+.order_content_delivery_elem {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.order_content_delivery_title {
+  font-family: Unbounded;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+.order_content_delivery_date {
+  font-family: Unbounded;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+.order_content_option {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.order_content_option_elem {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+}
+.order_content_option_elem_title {
+  font-family: Unbounded;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+.order_content_option_elem_text {
+  font-family: Unbounded;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.country-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px;
+}
+
+.warehouse-card {
+  border: 1px solid #e3e3e3;
+  border-radius: 12px;
+  padding: 16px 20px;
+  background: #ffffff;
+  display: inline-block;
+  max-width: 480px;
+  font-family: "Inter", sans-serif;
+}
+
+.warehouse-card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.warehouse-card-text {
+  font-family: Unbounded;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.warehouse-card-label {
+  font-family: Unbounded;
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.warehouse-card-flag img {
+  width: 40px;
+  height: auto;
+  border-radius: 4px;
+  object-fit: cover;
 }

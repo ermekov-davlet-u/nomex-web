@@ -149,7 +149,6 @@ body {
 
 .recipient-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 30px;
   margin-top: 20px;
 }
@@ -566,16 +565,16 @@ h2 {
 }
 
 .personal-info-form .submit-button {
-  background: linear-gradient(to right, #fd4582, rgba(0, 184, 255, 1));
+  background: #fa8688;
   border: none;
   color: white;
-  padding: 12px 18px;
-  font-size: 16px;
+  padding: 16px 64px;
+  font-size: 14px;
   border-radius: 6px;
   cursor: pointer;
-  width: 100%;
   margin-top: 16px;
   transition: 0.3s ease;
+  border-radius: 10px;
 }
 
 .personal-info-form .submit-button:hover {
@@ -586,6 +585,11 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   gap: 36px;
+}
+
+.personal-bottom {
+  display: flex;
+  justify-content: end;
 }
 
 .form-title {
@@ -976,4 +980,68 @@ h2 {
 .contacts-info p {
   color: var(--gray);
   margin-bottom: 0.5rem;
+}
+
+.order-card {
+  padding: 22px 30px;
+}
+.order-card_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 24px;
+}
+.order-card_num {
+  font-weight: 500;
+  font-size: 20px;
+}
+.order-card_status {
+  padding: 4px 16px;
+  background-color: #fa8688;
+  padding-top: 0;
+  color: white;
+  border-radius: 14px;
+}
+.order-card_slider {
+}
+.order-card_country {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 26px;
+}
+.order-card_country_from {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.order-card_country_flag {
+  width: 36px;
+  height: 24px;
+}
+.order-flag {
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+}
+.order-card_country_text {
+}
+.order-card_country_title {
+  font-size: 12px;
+  font-weight: 500;
+}
+.order-card_country_date {
+  font-size: 11px;
+  color: #cccccc;
+}
+.order-card_country_to {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.order-card_reciever {
+}
+.order-card_reciever_title {
+}
+.order-card_reciever_fio {
 }

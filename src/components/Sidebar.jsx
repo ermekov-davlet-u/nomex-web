@@ -12,6 +12,9 @@ function Sidebar() {
                     <NavLink to="/orders">📦 Заказы</NavLink>
                 </li>
                 <li>
+                    <NavLink to="/country">Страны</NavLink>
+                </li>
+                <li>
                     <NavLink to="/profile">👤 Профиль</NavLink>
                 </li>
                 <li>
