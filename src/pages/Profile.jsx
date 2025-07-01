@@ -27,20 +27,13 @@ const ProfilePage = () => {
         <div className="profile-container">
             <div className="prime-section">
                 <div className="prime-header">
-                    <MdStar className="prime-icon" />
-                    <h2 className="prime-title">Статус Prime</h2>
+                    <h2 className="prime-title"></h2>
                 </div>
-                <p className="prime-dates">01 Apr 2024 — 01 Apr 2025</p>
-                <div className="prime-progress">
-                    <div className="progress-bar">
-                        <div className="progress-fill" style={{ width: "10%" }}></div>
-                    </div>
-                    <p className="progress-text">0 / 100 до следующего уровня</p>
-                </div>
+
             </div>
 
             <div className="profile-options">
-                <ProfileOption icon={<IoPersonOutline />} label="Личная информация" />
+                {/* <ProfileOption icon={<IoPersonOutline />} label="Личная информация" /> */}
                 <ProfileOption icon={<IoKeyOutline />} label="Изменить пароль" />
                 <ProfileOption icon={<IoPeopleOutline />} label="Купить вместо меня" onClick={() => navigate("/BuyForMeForm")} />
                 <ProfileOption icon={<IoPeopleOutline />} label="Получатели" onClick={() => navigate("/recipient")} />

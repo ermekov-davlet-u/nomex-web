@@ -8,7 +8,8 @@ export default function TextField({
     placeholder,
     icon,
     error,
-    accept
+    accept,
+    name
 }) {
     return (
         <div className={`text-field_form-group ${error ? "error" : ""}`}>
@@ -27,6 +28,7 @@ export default function TextField({
                 />
             ) : (
                 <input
+                    name={name}
                     type={type}
                     value={value}
                     onChange={onChange}

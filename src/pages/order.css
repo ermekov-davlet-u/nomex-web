@@ -96,32 +96,34 @@
 }
 /* order.css */
 .ordform-container {
-  width: 100%;
-  max-width: 600px;
+  max-width: 1296px;
+  max-height: 732px;
+  top: 192px;
   margin: 0 auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  left: 67px;
+  border-radius: 20px;
+  background-color: white;
+  padding: 60px 32px;
 }
 
 .ordform-header {
-  font-size: 2rem;
-  text-align: center;
-  margin-bottom: 20px;
-  color: #333;
-  font-weight: 600;
+  font-family: Unbounded;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
 }
 
-.ordform-space-y-4 {
+.ordform-space {
   display: flex;
-  flex-direction: column;
   gap: 16px;
+  flex-wrap: wrap;
 }
 
 .ordform-group {
   display: flex;
   flex-direction: column;
+  width: 220px;
 }
 
 .ordform-label {
@@ -139,6 +141,7 @@
   border: 1px solid #ddd;
   outline: none;
   transition: border-color 0.3s ease;
+  width: 100%;
 }
 
 .ordform-input:focus,
@@ -349,6 +352,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 48px;
+  padding-top: 48px;
 }
 
 .warehouse-card {
@@ -389,4 +393,71 @@
   height: auto;
   border-radius: 4px;
   object-fit: cover;
+}
+
+.contact-subtitle {
+  font-family: Unbounded;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: right;
+}
+
+.contact-bottom {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 60px;
+}
+.contact-bottom_left {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.contact-bottom_right {
+}
+
+.welcome {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #fa8688;
+  height: 100vh;
+}
+.welcome_left {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: center;
+  background-color: white;
+  padding: 60px;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  gap: 64px;
+}
+.welcome_title {
+  font-family: Unbounded;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 100%;
+  letter-spacing: 0px;
+  color: #313131;
+}
+.welcome_btns {
+  display: flex;
+  gap: 12px;
+}
+.welcome_subtext {
+  color: #fa8688;
+}
+.welcome_text {
+}
+.welcome_right {
+}
+
+.big_block {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

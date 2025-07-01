@@ -1,0 +1,49 @@
+.tutorial-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.tutorial-modal {
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  max-width: 500px;
+  text-align: center;
+}
+
+.tutorial-modal h2 {
+  font-family: Unbounded;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+}
+
+.tutorial-modal p {
+  font-family: Unbounded;
+  font-weight: 300;
+  /* font-size: 18px; */
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+
+  margin-bottom: 24px;
+}
+.tutorial-modal_prop {
+  font-family: Unbounded;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-decoration: underline;
+  text-decoration-style: solid;
+  text-decoration-offset: 0%;
+  color: #fa8688;
+  text-decoration-thickness: 0%;
+}

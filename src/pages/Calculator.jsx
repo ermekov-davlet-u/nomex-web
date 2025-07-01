@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { FaPlane, FaCube, FaChevronDown, FaChevronUp, FaInfoCircle } from "react-icons/fa";
 import { useGetCountriesQuery } from "../store/api/recipientApi";
 import { API_BASE_URL } from "../config";
+import TextField from "../components/TextField";
+import SelectField from "../components/MySelect";
+import Button from "../components/Button";
 
 
 const Calculator = () => {
@@ -26,100 +29,118 @@ const Calculator = () => {
     };
 
     return (
-        <div className="calculator">
-            {isModalVisible && (
-                <div className="modal-backdrop" onClick={() => setIsModalVisible(false)}>
-                    <div className="modal" onClick={(e) => e.stopPropagation()}>
-                        <h3>Выберите страну</h3>
-                        {countries.map((country, index) => (
-                            <div key={index} className="country-option" onClick={() => handleCountrySelect(country)}>
-                                <img src={API_BASE_URL + country?.flag} alt={country.name} className="flag" />
+        <div className="personal-info-form">
+            <h2 className="form-title">Калькулятор: (?)</h2>
+
+            <div className="personal-info_content">
+                {isModalVisible && (
+                    <SelectField
+                        label="Страна"
+                        name="selectedCountry"
+                        value={selectedCountry?.guid || ""}
+                        onChange={(e) => {
+                            const selected = countries.find((c) => c.guid === e.target.value);
+                            setSelectedCountry(selected || null);
+                        }}
+                        placeholder="Выберите страну"
+                        options={countries.map((country) => ({
+                            value: country.guid,
+                            label: (
+                                <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                                    <img
+                                        src={API_BASE_URL + country.flag}
+                                        alt={country.country}
+                                        style={{ width: "24px", height: "16px", objectFit: "contain" }}
+                                    />
+                                    <span>{country.country}</span>
+                                </div>
+                            )
+                        }))}
+                    />
+
+                )}
+
+                <SelectField
+                    label="Тип клиента"
+                    name="selectedTab"
+                    value={selectedTab}
+                    onChange={(e) => handleSelectedTab(e.target.value)}
+                    options={[
+                        { value: "individual", label: "Физическое лицо" },
+                        { value: "company", label: "Компания" },
+                    ]}
+                    placeholder="Выберите тип"
+                    defaultValue=""
+                />
+
+
+                <SelectField
+                    label="Страна"
+                    name="selectedCountry"
+                    value={selectedCountry?.guid || ""}
+                    onChange={handleCountrySelect}
+                    placeholder="Выберите страну"
+                    options={countries.map((country) => ({
+                        value: country.guid,
+                        label: (
+                            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                                <img
+                                    src={API_BASE_URL + country.flag}
+                                    alt={country.country}
+                                    style={{ width: 24, height: 16, objectFit: "contain" }}
+                                />
                                 <span>{country.country}</span>
                             </div>
-                        ))}
-                    </div>
-                </div>
-            )}
+                        ),
+                    }))}
+                />
 
-            <div className="tabs">
-                <button
-                    className={`tab ${selectedTab === "individual" ? "active" : ""}`}
-                    onClick={() => handleSelectedTab("individual")}
-                >
-                    Физическое лицо
-                </button>
-                <button
-                    className={`tab ${selectedTab === "company" ? "active" : ""}`}
-                    onClick={() => handleSelectedTab("company")}
-                >
-                    Компания
-                </button>
-            </div>
-
-            <div className="delivery-box">
-                <div className="row space-between">
-                    <div className="country-select" onClick={() => setIsModalVisible(true)}>
-                        <img src={API_BASE_URL + selectedCountry?.flag} alt="flag" className="flag" />
-                        {isModalVisible ? <FaChevronUp /> : <FaChevronDown />}
-                    </div>
-
-                    <div className="input-inline">
-                        <FaPlane />
-                        <span>Авиа</span>
-                    </div>
-                </div>
-
-                <p className="info">1 кг = 900 SOM | 4 - 9 рабочих дней</p>
-
-                <label>Введите вес (кг)</label>
-                <input
+                <TextField
                     type="number"
+                    label="Введите вес (кг)"
                     value={weight}
                     onChange={(e) => setWeight(e.target.value)}
                     placeholder="Вес (кг)"
                 />
-            </div>
+                <p className="info">Вес округляется до ближайших 100 грамм.</p>
 
-            <div className="row space-between align-center toggle-container">
-                <label>Введите размеры (см)</label>
-                {showToggle && (
-                    <input
-                        type="checkbox"
-                        checked={dimensionsEnabled}
-                        onChange={(e) => setDimensionsEnabled(e.target.checked)}
-                    />
-                )}
-            </div>
-
-            {dimensionsEnabled && (
                 <div className="dimensions">
-                    {["length", "width", "height"].map((dim) => (
-                        <div className="dimension-box" key={dim}>
-                            <div className="label-icon">
-                                <FaCube />
-                                <span>{dim === "length" ? "Длина" : dim === "width" ? "Ширина" : "Высота"}</span>
+                    {["length", "width", "height"].map((dim) => {
+                        const label =
+                            dim === "length"
+                                ? "Длина"
+                                : dim === "width"
+                                    ? "Ширина"
+                                    : "Высота";
+
+                        return (
+                            <div className="dimension-box" key={dim}>
+                                <TextField
+                                    type="number"
+                                    label={label}
+                                    icon={<FaCube />}
+                                    placeholder={label}
+                                    value={dimensions[dim]}
+                                    onChange={(e) =>
+                                        setDimensions({
+                                            ...dimensions,
+                                            [dim]: e.target.value,
+                                        })
+                                    }
+                                />
                             </div>
-                            <input
-                                type="number"
-                                placeholder={dim === "length" ? "Длина" : dim === "width" ? "Ширина" : "Высота"}
-                                value={dimensions[dim]}
-                                onChange={(e) => setDimensions({ ...dimensions, [dim]: e.target.value })}
-                            />
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
-            )}
-
-            <div className="price-box">
-                <span>Стоимость доставки</span>
-                <strong>0 SOM</strong>
-            </div>
-
-            <div className="info-box">
-                <FaInfoCircle />
-                <p>Вес округляется до ближайших 100 грамм.</p>
+                <div className="personal-bottom">
+                    <Button onClick={() => { }}>
+                        Посчитать
+                    </Button>
+                </div>
             </div>
         </div>
+
+
     );
 };
 

@@ -2,6 +2,7 @@ import React from "react";
 import "./pages.css";
 import { useRegisterMutation } from "../store/api/authApi";
 import { Link, useNavigate } from "react-router-dom";
+import Button from "../components/Button";
 
 export function RegisterForm() {
     const [email, setEmail] = React.useState("");
@@ -81,69 +82,61 @@ export function RegisterForm() {
 
 
     return (
-        <div className="login-container">
-            <form className="login-form">
-                <div className="form-group">
-                    <input
-                        type="email"
+
+        <div className="login">
+            <div className="login_form">
+                <div className="login-form_top"></div>
+                <div className="login-form_title">Авторизация</div>
+                <div className="login-form_field">
+                    <div className="login-form_label">email</div>
+                    <input className="login-form_inp" type="email"
                         name="email"
                         placeholder="Email"
                         value={email}
-                        className="form-group-input"
                         onChange={handleEmailChange}
-                        required
-                    />
-                    {errors.email && <span className="error">{errors.email}</span>}
+                        required></input>
                 </div>
-                <div className="form-group">
-                    <input
+                <div className="login-form_field">
+                    <div className="login-form_label">email</div>
+                    <input className="login-form_inp"
                         type="tel"
                         name="phone"
                         placeholder="Телефон (+7XXXXXXXXXX)"
                         value={phone}
-                        className="form-group-input"
                         onChange={handlePhoneChange}
-                        required
-                    />
-                    {errors.phone && <span className="error">{errors.phone}</span>}
+                        required></input>
                 </div>
-                <div className="form-group">
-                    <div className="password-input-wrapper">
-                        <input
-                            type={showPassword ? "text" : "password"}
-                            name="password"
-                            placeholder="Пароль"
-                            value={password}
-                            className="form-group-input"
-                            onChange={handlePasswordChange}
-                            required
-                        />
-                        <button
-                            type="button"
-                            className="toggle-password"
-                            onClick={() => setShowPassword(!showPassword)}
-                            aria-label={showPassword ? "Скрыть пароль" : "Показать пароль"}
-                        >
-                            {showPassword ? "Скрыть" : "Показать"}
-                        </button>
-                    </div>
-                    {errors.password && <span className="error">{errors.password}</span>}
+                <div className="login-form_field">
+                    <div className="login-form_label">Пароль</div>
+                    <input className="login-form_inp" type={showPassword ? "text" : "password"}
+                        name="password"
+                        placeholder="Пароль"
+                        value={password}
+                        onChange={handlePasswordChange}
+                        required></input>
+                    <img src="" alt="" className="login-form_img" />
                 </div>
-                <div className="form-group">
-                    <input
-                        type="password"
-                        name="confirmPassword"
-                        placeholder="Подтвердите пароль"
+                <div className="login-form_field">
+                    <div className="login-form_label">Повторите пароль</div>
+                    <input className="login-form_inp" type={showPassword ? "text" : "password"}
+                        name="password"
+                        placeholder="Пароль"
                         value={confirmPassword}
-                        className="form-group-input"
                         onChange={handleConfirmPasswordChange}
-                        required
-                    />
-                    {errors.confirmPassword && <span className="error">{errors.confirmPassword}</span>}
+                        required></input>
+                    <img src="" alt="" className="login-form_img" />
                 </div>
-                <button type="submit" className="submit-btn" onClick={handleSubmit}>Зарегистрироваться</button>
-                <Link to={"/login"}>Войти</Link>
-            </form>
+                <div className="login-form_bottom">
+                    <Button onClick={handleSubmit}> Регистрация </Button>
+                    <div className="login-form_bottom_text">
+                        У вас уже есть аккаунт?{" "}
+                        <Link to={"/login"} className="register">Войти</Link>
+                    </div>
+                </div>
+            </div>
+            <div className="login-img">
+                <img src="/login-img.png" alt="" />
+            </div>
         </div>
     );
 }

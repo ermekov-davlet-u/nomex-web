@@ -14,14 +14,16 @@ import { useGetCountriesQuery } from "../store/api/recipientApi";
 
 const Country = () => {
   const [activeStatus, setActiveStatus] = useState(0);
-  const { data: countries, error: countriesError, isLoading: isLoadingCountries } = useGetCountriesQuery();
+  const { data: countries = [], error: countriesError, isLoading: isLoadingCountries } = useGetCountriesQuery();
 
 
   return (
     <div className="country">
+      <div className="form-title">Добавьте свою информацию</div>
       <div className="country-list">
         {
           countries.map(item => {
+            // alert(JSON.stringify(item))
             return <div className="country_card">
               <div className="warehouse-card">
                 <div className="warehouse-card-content">
@@ -38,7 +40,7 @@ const Country = () => {
                     </p>
                   </div>
                   <div className="warehouse-card-flag">
-                    <img src={""} alt="Spain Flag" />
+                    <img src={"https://api-onex.ibm.kg" + item.flag} alt="Spain Flag" />
                   </div>
                 </div>
               </div>

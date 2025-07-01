@@ -5,29 +5,32 @@ function Sidebar() {
     return (
         <nav className="sidebar">
             <ul>
-                <li>
-                    <NavLink to="/home">🏠 Главная</NavLink>
+                {/* <li className="sidebar-li">
+                    <NavLink to="/home"> Главная</NavLink>
+                </li> */}
+                <li className="sidebar-li">
+                    <NavLink className="sidebar-elem" to="/orders"> Заказы</NavLink>
                 </li>
-                <li>
-                    <NavLink to="/orders">📦 Заказы</NavLink>
+                <li className="sidebar-li">
+                    <NavLink className="sidebar-elem" to="/create-order">Создать заказ</NavLink>
                 </li>
-                <li>
-                    <NavLink to="/country">Страны</NavLink>
+                <li className="sidebar-li">
+                    <NavLink className="sidebar-elem" to="/country">Страны</NavLink>
                 </li>
-                <li>
-                    <NavLink to="/profile">👤 Профиль</NavLink>
+                <li className="sidebar-li">
+                    <NavLink className="sidebar-elem" to="/recipient">Получатели</NavLink>
                 </li>
-                <li>
-                    <NavLink to="/shops">🛒 Магазины</NavLink>
+                <li className="sidebar-li">
+                    <NavLink className="sidebar-elem" to="/shops"> Магазины</NavLink>
                 </li>
-                <li>
-                    <NavLink to="/calculator">🧮 Калькулятор</NavLink>
+                <li className="sidebar-li">
+                    <NavLink className="sidebar-elem" to="/BuyForMeForm">Купи вместо меня</NavLink>
                 </li>
-                <li>
-                    <NavLink to="/address">📍 Адреса</NavLink>
+                <li className="sidebar-li">
+                    <NavLink className="sidebar-elem" to="/calculator"> Калькулятор</NavLink>
                 </li>
-                <li>
-                    <NavLink to="/contact">📞 Контакты</NavLink>
+                <li className="sidebar-li">
+                    <NavLink className="sidebar-elem" to="/contact"> Контакты</NavLink>
                 </li>
                 {/* добавь остальные ссылки по желанию */}
             </ul>

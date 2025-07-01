@@ -3,10 +3,14 @@ import { Link, useLocation } from "react-router-dom";
 import { FaUserCircle, FaBell } from "react-icons/fa";
 import "./component.css"; // можно стилизовать отдельно
 import { useSelector } from "react-redux"; // если уведомления в Redux
+import { handleLogout } from "../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const Header = () => {
   const location = useLocation();
-
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   // Пример: получить уведомления из Redux
   const notifications = useSelector(
     (state) => state.notifications?.items || []
@@ -43,7 +47,7 @@ const Header = () => {
         </div>
         <div className="header_left_btns">
           <div className="header_left_btn">Помощь</div>
-          <div className="header_left_btn">Выйти</div>
+          <div className="header_left_btn" onClick={() => { handleLogout(dispatch, navigate) }}>Выйти</div>
         </div>
       </div>
     </header>

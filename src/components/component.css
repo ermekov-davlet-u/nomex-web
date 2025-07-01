@@ -56,6 +56,7 @@
   box-shadow: 2px 0 12px rgba(0, 0, 0, 0.1);
   border-radius: 50px;
   padding-top: 120px;
+  gap: 8px;
 }
 
 .sidebar ul {
@@ -64,23 +65,7 @@
   margin: 0;
 }
 
-.sidebar li {
-  margin-bottom: 12px;
-  padding: 16px 30px;
-  padding: 8px 12px;
-  border-radius: 6px;
-  background-color: #ffffff;
-}
-
-.sidebar a {
-  color: #272727;
-  text-decoration: none;
-  font-weight: 200;
-  font-size: 14px;
-  display: block;
-  padding: 8px 12px;
-  border-radius: 6px;
-  transition: background 0.3s;
+.sidebar {
 }
 
 .sidebar li:hover,
@@ -112,6 +97,7 @@
   font-weight: 300;
   font-family: "Unbounded";
   color: #fa8688;
+  cursor: pointer;
 }
 .text-flield {
   padding: 18px 20px;
@@ -298,4 +284,69 @@
   text-decoration-style: solid;
   text-decoration-offset: 0%;
   text-decoration-thickness: 0%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.form-group.error .file-button {
+  background: #ff7070;
+}
+
+.invoice-label {
+  font-family: Unbounded;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.tooltip {
+  font-weight: normal;
+  font-size: 0.85rem;
+  color: #999;
+  margin-left: 4px;
+}
+
+.file-input-container {
+  position: relative;
+  width: fit-content;
+}
+
+.file-input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.file-button {
+  display: inline-block;
+  background: linear-gradient(90deg, #fd7c7c, #fda0a0);
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+}
+
+.file-button:hover {
+  background: linear-gradient(90deg, #fb5b5b, #fb8a8a);
+}
+
+.file-name {
+  font-family: Unbounded;
+  font-weight: 200;
+  font-size: 10px;
+  line-height: 100%;
+  letter-spacing: 0px;
 }

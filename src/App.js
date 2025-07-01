@@ -1,5 +1,4 @@
-import { BrowserRouter } from "react-router-dom";
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import { AuthProvider } from "./auth/AuthProvider";
@@ -24,114 +23,128 @@ import Home from "./pages/Home";
 import ContactsPage from "./pages/ContactsPage";
 import ChooseFizUr from "./pages/ChooseFizUr";
 import CompanyDetail from "./pages/CompanyDetail";
+import Country from "./pages/Country";
+import WelcomePage from "./pages/WelcomePage";
 
 import "./App.css";
-import Country from "./pages/Country";
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="layout">
-        <Sidebar />
-
-        <main className="content">
-          <Header />
-          <AuthProvider>
-            <Routes>
-              <Route path="/login" element={<Login />} />
-              <Route path="/home" element={<Home />} />
-              <Route path="/register" element={<RegisterForm />} />
-              <Route path="/register" element={<RegisterForm />} />
-              <Route
-                path="/orders"
-                element={
-                  <ProtectedRoute>
-                    <OrderList />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/country"
-                element={
-                  <ProtectedRoute>
-                    <Country />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/profile"
-                element={
-                  <ProtectedRoute>
-                    <ProfilePage />
-                  </ProtectedRoute>
-                }
-              />
-              <Route path="/confirm-code" element={<ConfirmActivCode />} />
-              <Route path="/company-detail" element={<CompanyDetail />} />
-              <Route path="/choose-role" element={<ChooseFizUr />} />
-              <Route path="/contact" element={<ContactsPage />} />
-              <Route path="/personal-info" element={<PersonalInfoDetailWeb />} />
-              <Route
-                path="/shops"
-                element={
-                  <ProtectedRoute>
-                    <Shops />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/calculator"
-                element={
-                  <ProtectedRoute>
-                    <Calculator />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/address"
-                element={
-                  <ProtectedRoute>
-                    <AddressList />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/BuyForMeForm"
-                element={
-                  <ProtectedRoute>
-                    <BuyForMeForm />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/create-order"
-                element={
-                  <ProtectedRoute>
-                    <CreateOrderForm />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/recipient"
-                element={
-                  <ProtectedRoute>
-                    <RecipientList />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/create-recipient"
-                element={
-                  <ProtectedRoute>
-                    <AddRecipientForm />
-                  </ProtectedRoute>
-                }
-              />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </AuthProvider>
-        </main>
-      </div>
+      <AuthProvider>
+        <Routes>
+          {/* Welcome page - без лэйаута */}
+          <Route path="/" element={<WelcomePage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<RegisterForm />} />
+          <Route path="/confirm-code" element={<ConfirmActivCode />} />
+          <Route path="/choose-role" element={<ChooseFizUr />} />
+          <Route
+            path="/personal-info"
+            element={<PersonalInfoDetailWeb />}
+          />
+          {/* Все остальные страницы - с лэйаутом */}
+          <Route
+            path="*"
+            element={
+              <div className="layout">
+                <Sidebar />
+                <main className="content">
+                  <Header />
+                  <Routes>
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/home" element={<Home />} />
+                    <Route path="/register" element={<RegisterForm />} />
+                    <Route
+                      path="/orders"
+                      element={
+                        <ProtectedRoute>
+                          <OrderList />
+                        </ProtectedRoute>
+                      }
+                    />
+                    <Route
+                      path="/create-order"
+                      element={
+                        <ProtectedRoute>
+                          <CreateOrderForm />
+                        </ProtectedRoute>
+                      }
+                    />
+                    <Route
+                      path="/country"
+                      element={
+                        <ProtectedRoute>
+                          <Country />
+                        </ProtectedRoute>
+                      }
+                    />
+                    <Route
+                      path="/profile"
+                      element={
+                        <ProtectedRoute>
+                          <ProfilePage />
+                        </ProtectedRoute>
+                      }
+                    />
+                    <Route path="/company-detail" element={<CompanyDetail />} />
+                    <Route path="/contact" element={<ContactsPage />} />
+                    <Route
+                      path="/shops"
+                      element={
+                        <ProtectedRoute>
+                          <Shops />
+                        </ProtectedRoute>
+                      }
+                    />
+                    <Route
+                      path="/calculator"
+                      element={
+                        <ProtectedRoute>
+                          <Calculator />
+                        </ProtectedRoute>
+                      }
+                    />
+                    <Route
+                      path="/address"
+                      element={
+                        <ProtectedRoute>
+                          <AddressList />
+                        </ProtectedRoute>
+                      }
+                    />
+                    <Route
+                      path="/BuyForMeForm"
+                      element={
+                        <ProtectedRoute>
+                          <BuyForMeForm />
+                        </ProtectedRoute>
+                      }
+                    />
+                    <Route
+                      path="/recipient"
+                      element={
+                        <ProtectedRoute>
+                          <RecipientList />
+                        </ProtectedRoute>
+                      }
+                    />
+                    <Route
+                      path="/create-recipient"
+                      element={
+                        <ProtectedRoute>
+                          <AddRecipientForm />
+                        </ProtectedRoute>
+                      }
+                    />
+                    <Route path="*" element={<NotFound />} />
+                  </Routes>
+                </main>
+              </div>
+            }
+          />
+        </Routes>
+      </AuthProvider>
     </BrowserRouter>
   );
 }

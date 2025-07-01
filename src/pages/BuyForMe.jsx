@@ -4,6 +4,10 @@ import "react-toastify/dist/ReactToastify.css";
 import { useGetCountriesQuery, useGetRecipientsQuery } from "../store/api/recipientApi";
 import { useSubmitBuyForMeMutation } from "../store/api/buyForMeApi";
 import { FaPlus, FaTrash } from "react-icons/fa";
+import SelectField from "../components/MySelect";
+import TextField from "../components/TextField";
+import Button from "../components/Button";
+import "./pages.css"
 
 const BuyForMeForm = () => {
     const [formData, setFormData] = useState({
@@ -38,15 +42,15 @@ const BuyForMeForm = () => {
 
     const validateForm = () => {
         const errors = {
-            reciever_guid: !formData.reciever_guid,
+            reciever_guid: !formData.selectedReciever,
             lists: formData.lists.reduce((acc, item) => {
                 const itemErrors = {
                     name: item?.name?.trim() === "",
                     link: item.link.trim() === "",
                     price: item.price === "",
                     amount: item.amount === "",
-                    selectedCurrency: !item.selectedCurrency,
-                    selectedCountry: !item.selectedCountry,
+                    selectedCurrency: !formData.selectedReciever,
+                    selectedCountry: !formData.selectedCountry,
                 };
                 if (Object.values(itemErrors).some(Boolean)) {
                     acc[item.id] = itemErrors;
@@ -87,7 +91,7 @@ const BuyForMeForm = () => {
             promocode: formData.promocode.trim(),
             comment: formData.comment.trim(),
             country_guid: formData.selectedCountry || null,
-            reciever_guid: formData.reciever_guid || null,
+            reciever_guid: formData.selectedReciever || null,
             invoice_guid: formData.invoice_guid,
             type,
             items,
@@ -184,124 +188,122 @@ const BuyForMeForm = () => {
     };
 
     return (
-        <div style={styles.container}>
+        <div style={styles.container} className="buy_for">
 
-            <div className="ordform-group">
-                <label className="ordform-label">Получатель</label>
-                {isLoadingRecipients ? (
-                    <div className="ordform-loading">Загрузка...</div>
-                ) : recipientsError ? (
-                    <div className="ordform-error">Ошибка загрузки</div>
-                ) : (
-                    <select
-                        value={formData.selectedReciever}
-                        onChange={handleInputChange}
-                        className="ordform-select"
-                        name="selectedReciever"
-                    >
-                        <option value="">Выберите получателя</option>
-                        {recipients.map((r) => (
-                            <option key={r.guid} value={r.guid}>
-                                {r.name}
-                            </option>
-                        ))}
-                    </select>
-                )}
-            </div>
+            <div className="buy_top">
+                <div className="ordform-group">
+                    {isLoadingRecipients ? (
+                        <div className="ordform-loading">Загрузка...</div>
+                    ) : recipientsError ? (
+                        <div className="ordform-error">Ошибка загрузки</div>
+                    ) : (
+                        <SelectField
+                            label="Получатель"
+                            name="selectedReciever"
+                            value={formData.selectedReciever}
+                            onChange={handleInputChange}
+                            placeholder="Выберите получателя"
+                            options={recipients.map((r) => ({
+                                value: r.guid,
+                                label: r.name,
+                            }))}
+                            defaultValue=""
+                        />
+                    )}
+                </div>
 
-            <div className="ordform-group">
-                <label className="ordform-label">Страна</label>
-                {isLoadingCountries ? (
-                    <div className="ordform-loading">Загрузка...</div>
-                ) : countriesError ? (
-                    <div className="ordform-error">Ошибка загрузки</div>
-                ) : (
-                    <select
-                        value={formData.selectedCountry}
-                        onChange={handleInputChange}
-                        className="ordform-select"
-                        name="selectedCountry"
-                    >
-                        <option value="">Выберите страну</option>
-                        {countries.map((c) => (
-                            <option key={c.guid} value={c.guid}>
-                                {c.country}
-                            </option>
-                        ))}
-                    </select>
-                )}
+                <div className="ordform-group">
+                    {isLoadingCountries ? (
+                        <div className="ordform-loading">Загрузка...</div>
+                    ) : countriesError ? (
+                        <div className="ordform-error">Ошибка загрузки</div>
+                    ) : (
+                        <SelectField
+                            label="Страна"
+                            name="selectedCountry"
+                            value={formData.selectedCountry}
+                            onChange={handleInputChange}
+                            placeholder="Выберите страну"
+                            options={countries.map((c) => ({
+                                value: c.guid,
+                                label: c.country,
+                            }))}
+                            defaultValue=""
+                        />
+                    )}
+                </div>
             </div>
             {formData.lists.map((item, index) => (
-                <div key={item.id} style={styles.formGroup}>
+                <>
                     <label style={styles.label}>Товар {index + 1}</label>
-                    <input
-                        type="text"
-                        placeholder="Название"
-                        value={item.name}
-                        onChange={(e) => handleListChange(item.id, "name", e.target.value)}
-                        style={styles.input}
-                    />
-                    <input
-                        type="text"
-                        placeholder="Ссылка"
-                        value={item.link}
-                        onChange={(e) => handleListChange(item.id, "link", e.target.value)}
-                        style={styles.input}
-                    />
-                    <input
-                        type="text"
-                        placeholder="Цена"
-                        value={item.price}
-                        onChange={(e) => handleListChange(item.id, "price", e.target.value)}
-                        style={styles.input}
-                    />
-                    <input
-                        type="text"
-                        placeholder="Количество"
-                        value={item.amount}
-                        onChange={(e) => handleListChange(item.id, "amount", e.target.value)}
-                        style={styles.input}
-                    />
-                    <input
-                        type="text"
-                        placeholder="Размер"
-                        value={item.size}
-                        onChange={(e) => handleListChange(item.id, "size", e.target.value)}
-                        style={styles.input}
-                    />
-                    <input
-                        type="text"
-                        placeholder="Цвет"
-                        value={item.color}
-                        onChange={(e) => handleListChange(item.id, "color", e.target.value)}
-                        style={styles.input}
-                    />
-                    <button
-                        onClick={() => handleDeleteItem(item.id)}
-                        style={styles.iconButton}
-                        title="Удалить товар"
-                    >
-                        <FaTrash />
-                    </button>
+                    <div key={item.id} className="buy_for_form_group">
+                        <TextField
+                            placeholder="Название"
+                            value={item.name}
+                            onChange={(e) => handleListChange(item.id, "name", e.target.value)}
+                        />
 
-                </div>
+                        <TextField
+                            placeholder="Ссылка"
+                            value={item.link}
+                            onChange={(e) => handleListChange(item.id, "link", e.target.value)}
+                        />
+
+                        <TextField
+                            placeholder="Цена"
+                            value={item.price}
+                            onChange={(e) => handleListChange(item.id, "price", e.target.value)}
+                        />
+
+                        <TextField
+                            placeholder="Количество"
+                            value={item.amount}
+                            onChange={(e) => handleListChange(item.id, "amount", e.target.value)}
+                        />
+
+                        {/* <TextField
+                            placeholder="Размер"
+                            value={item.size}
+                            onChange={(e) => handleListChange(item.id, "size", e.target.value)}
+                        />
+
+                        <TextField
+                            placeholder="Цвет"
+                            value={item.color}
+                            onChange={(e) => handleListChange(item.id, "color", e.target.value)}
+                        /> */}
+
+                        <button
+                            onClick={() => handleDeleteItem(item.id)}
+                            className="del_btn"
+                            title="Удалить товар"
+                        >
+                            {/* <FaTrash /> */}
+                            Удалить
+                        </button>
+
+                    </div>
+                </>
+
             ))}
 
             <div style={styles.buttonGroup}>
-                <button
+                <Button
                     style={styles.iconButton}
                     onClick={handleAddItem}
                     title="Добавить товар"
                 >
-                    <FaPlus />
-                </button>
-                <button
-                    style={styles.submitButton}
+                    Добавить товар
+                </Button>
+            </div>
+            <div className="person-footer">
+                <Button
+                    style={styles.iconButton}
                     onClick={() => handleSubmit("buy")}
-                    disabled={isSubmitting}
+                    title="Добавить товар"
                 >
-                    {isSubmitting ? "Загрузка..." : "Отправить"}
-                </button>
+                    {isSubmitting ? "Загрузка..." : "Оформить заказ"}
+                </Button>
             </div>
         </div>
     );
@@ -309,12 +311,7 @@ const BuyForMeForm = () => {
 
 const styles = {
     container: {
-        padding: "20px",
-        maxWidth: "800px",
-        margin: "0 auto",
-        backgroundColor: "#fff",
-        color: "#333",
-        borderRadius: "8px",
+
     },
     formGroup: {
         marginBottom: "20px",

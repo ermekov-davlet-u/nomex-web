@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useAddRecipientMutation } from "../store/api/recipientApi"; // Мутация для добавления через Redux или API
+import TextField from "../components/TextField";
+import Button from "../components/Button";
 
 const AddRecipientForm = () => {
   const [formData, setFormData] = useState({
@@ -33,85 +35,101 @@ const AddRecipientForm = () => {
   };
 
   return (
-    <div className="add-recipient-form">
-      <h2>Добавить получателя</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group-rec">
-          <label>Имя</label>
-          <input
-            type="text"
+    <div className="recipient-list">
+      <div className="top-title">
+        <p className="form-title">Добавить получателя</p>
+        {/* <Button onClick={() => {
+          navigate("/create-recipient")
+        }}>
+          Добавить получателя
+        </Button> */}
+      </div>
+      <form onSubmit={handleSubmit} className="ordform-space">
+        <div className="ordform-group">
+          <TextField
+            label="Имя"
             name="first_name"
             value={formData.first_name}
             onChange={handleChange}
+            placeholder="Введите имя"
           />
         </div>
-        <div className="form-group-rec">
-          <label>Фамилия</label>
-          <input
-            type="text"
+
+        <div className="ordform-group">
+          <TextField
+            label="Фамилия"
             name="last_name"
             value={formData.last_name}
             onChange={handleChange}
+            placeholder="Введите фамилию"
           />
         </div>
-        <div className="form-group-rec">
-          <label>Телефон</label>
-          <input
-            type="text"
+
+        <div className="ordform-group">
+          <TextField
+            label="Телефон"
             name="phone"
             value={formData.phone}
             onChange={handleChange}
+            placeholder="+996..."
           />
         </div>
-        <div className="form-group-rec">
-          <label>ID паспорта</label>
-          <input
-            type="text"
+
+        <div className="ordform-group">
+          <TextField
+            label="ID паспорта"
             name="ppt_id"
-            value={formData.phone}
+            value={formData.ppt_id}
             onChange={handleChange}
+            placeholder="A1234567"
           />
         </div>
-        <div className="form-group-rec">
-          <label>ИНН</label>
-          <input
-            type="text"
+
+        <div className="ordform-group">
+          <TextField
+            label="ИНН"
             name="ppt_inn"
-            value={formData.phone}
+            value={formData.ppt_inn}
             onChange={handleChange}
+            placeholder="ИНН"
           />
         </div>
-        <div className="form-group-rec">
-          <label>Дата рождения</label>
-          <input
-            type="date"
+
+        <div className="ordform-group">
+          <TextField
+            label="Дата рождения"
             name="birth_date"
+            type="date"
             value={formData.birth_date}
             onChange={handleChange}
           />
         </div>
-        <div className="form-group-rec">
-          <label>Адрес</label>
-          <input
-            type="text"
+
+        <div className="ordform-group">
+          <TextField
+            label="Адрес"
             name="address"
             value={formData.address}
             onChange={handleChange}
+            placeholder="Введите адрес"
           />
         </div>
-        <div className="form-group-rec">
-          <label>Клиентский код</label>
-          <input
-            type="text"
+
+        <div className="ordform-group">
+          <TextField
+            label="Клиентский код"
             name="client_code"
             value={formData.client_code}
             onChange={handleChange}
+            placeholder="ONEX12345"
           />
         </div>
-        <button type="submit" disabled={isLoading}>
-          {isLoading ? "Загрузка..." : "Добавить получателя"}
-        </button>
       </form>
+      <div className="person-footer">
+        <Button type="submit" disabled={isLoading} onClick={handleSubmit}>
+          {isLoading ? "Загрузка..." : "Добавить получателя"}
+        </Button>
+      </div>
     </div>
   );
 };

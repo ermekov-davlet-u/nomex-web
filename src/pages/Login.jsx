@@ -5,6 +5,7 @@ import { useLoginMutation } from "../store/api/authApi";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../store/slice/authSlice";
 import { useDispatch } from "react-redux";
+import Button from "../components/Button";
 
 export function LoginForm() {
 	const [email, setEmail] = React.useState("");
@@ -57,45 +58,75 @@ export function LoginForm() {
 	};
 
 	return (
-		<div className="login-container">
-			<form className="login-form">
-				<div className="form-group">
-					<input
-						type="email"
+		// <div className="login-container">
+		// 	<form className="login-form">
+		// 		<div className="form-group">
+		// 			<input
+		// 				type="email"
+		// 				name="email"
+		// 				placeholder="Email"
+		// 				value={email}
+		// 				className="form-group-input"
+		// 				onChange={handleEmailChange}
+		// 				required
+		// 			/>
+		// 			{errors.email && <span className="error">{errors.email}</span>}
+		// 		</div>
+		// 		<div className="form-group">
+		// 			<div className="password-input-wrapper">
+		// 				<input
+		// 					
+		// 				/>
+		// 				<button
+		// 					type="button"
+		// 					className="toggle-password"
+		// 					onClick={() => setShowPassword(!showPassword)}
+		// 					aria-label={showPassword ? "Скрыть пароль" : "Показать пароль"}
+		// 				>
+		// 					{showPassword ? "Скрыть" : "Показать"}
+		// 				</button>
+		// 			</div>
+		// 			{errors.password && <span className="error">{errors.password}</span>}
+		// 		</div>
+		// 		<button type="button" className="submit-btn" onClick={handleLogin}>Войти</button>
+		// 		<Link to={"/register"}>Зарегистрироваться</Link>
+		// 	</form>
+		// </div>
+
+		<div className="login">
+			<div className="login_form">
+				<div className="login-form_top"></div>
+				<div className="login-form_title">Авторизация</div>
+				<div className="login-form_field">
+					<div className="login-form_label">email</div>
+					<input className="login-form_inp" type="email"
 						name="email"
 						placeholder="Email"
 						value={email}
-						className="form-group-input"
 						onChange={handleEmailChange}
-						required
-					/>
-					{errors.email && <span className="error">{errors.email}</span>}
+						required></input>
 				</div>
-				<div className="form-group">
-					<div className="password-input-wrapper">
-						<input
-							type={showPassword ? "text" : "password"}
-							name="password"
-							placeholder="Пароль"
-							value={password}
-							className="form-group-input"
-							onChange={handlePasswordChange}
-							required
-						/>
-						<button
-							type="button"
-							className="toggle-password"
-							onClick={() => setShowPassword(!showPassword)}
-							aria-label={showPassword ? "Скрыть пароль" : "Показать пароль"}
-						>
-							{showPassword ? "Скрыть" : "Показать"}
-						</button>
+				<div className="login-form_field">
+					<div className="login-form_label">password</div>
+					<input className="login-form_inp" type={showPassword ? "text" : "password"}
+						name="password"
+						placeholder="Пароль"
+						value={password}
+						onChange={handlePasswordChange}
+						required></input>
+					<img src="" alt="" className="login-form_img" />
+				</div>
+				<div className="login-form_bottom">
+					<Button onClick={handleLogin}> Войти </Button>
+					<div className="login-form_bottom_text">
+						У вас ещё нет аккаунта?{" "}
+						<Link to={"/register"} className="register">Зарегистрироваться</Link>
 					</div>
-					{errors.password && <span className="error">{errors.password}</span>}
 				</div>
-				<button type="button" className="submit-btn" onClick={handleLogin}>Войти</button>
-				<Link to={"/register"}>Зарегистрироваться</Link>
-			</form>
+			</div>
+			<div className="login-img">
+				<img src="/login-img.png" alt="" />
+			</div>
 		</div>
 	);
 }
