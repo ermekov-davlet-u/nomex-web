@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { useAddRecipientMutation } from "../store/api/recipientApi"; // Мутация для добавления через Redux или API
 import TextField from "../components/TextField";
 import Button from "../components/Button";
+import TutorialModal from "../components/TutorialModal";
+import { useTutorial } from "../hooks/useTutorial";
+import QuestionHint from "../components/QuestionHint";
 
 const AddRecipientForm = () => {
   const [formData, setFormData] = useState({
@@ -12,7 +15,7 @@ const AddRecipientForm = () => {
     address: "",
     client_code: "",
   });
-
+  const tutorial = useTutorial("tutorial_shown_recipient_form");
   const [addRecipient, { isLoading }] = useAddRecipientMutation(); // Мутация для создания получателя
 
   const handleChange = (e) => {
@@ -36,8 +39,20 @@ const AddRecipientForm = () => {
 
   return (
     <div className="recipient-list">
+      <TutorialModal
+        isOpen={tutorial.isOpen}
+        onClose={tutorial.onClose}
+        title="4 этап"
+        description="Здесь вы можете создать заказ более подробное описание, мы так же можем предложить вам посмотреть видео гайд для быстрого создания заказа"
+      />
       <div className="top-title">
-        <p className="form-title">Добавить получателя</p>
+        <p className="form-title">
+          Добавить получателя{" "}
+          <QuestionHint
+            text="Здесь должен быть текст с подсказкой Здесь должен быть текст с подсказкой Здесь должен быть текст с подсказкой"
+            position="right"
+          />
+        </p>
         {/* <Button onClick={() => {
           navigate("/create-recipient")
         }}>
@@ -71,11 +86,11 @@ const AddRecipientForm = () => {
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            placeholder="+996..."
+            placeholder="+7..."
           />
         </div>
 
-        <div className="ordform-group">
+        {/* <div className="ordform-group">
           <TextField
             label="ID паспорта"
             name="ppt_id"
@@ -94,7 +109,7 @@ const AddRecipientForm = () => {
             placeholder="ИНН"
           />
         </div>
-
+*/}
         <div className="ordform-group">
           <TextField
             label="Дата рождения"
@@ -121,7 +136,7 @@ const AddRecipientForm = () => {
             name="client_code"
             value={formData.client_code}
             onChange={handleChange}
-            placeholder="ONEX12345"
+            placeholder="RU12345"
           />
         </div>
       </form>

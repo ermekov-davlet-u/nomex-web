@@ -14,4 +14,22 @@ code {
   background-color: #f4f5fa;
   border-radius: 50px;
   padding: 60px;
+  flex-grow: 1;
+  max-height: calc(100vh - 168px);
+  /* overflow: scroll; */
+}
+
+@media screen and (max-width: 1280px) {
+  .content {
+    padding: 8px;
+    max-height: calc(100vh - 36px);
+    border-radius: 18px;
+    display: grid;
+    grid-template-rows: 68px 1fr;
+    overflow: auto;
+  }
+
+  .order_content {
+    padding: 12px;
+  }
 }

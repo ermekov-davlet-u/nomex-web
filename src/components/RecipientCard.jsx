@@ -1,25 +1,26 @@
 import React from "react";
 
 export default function RecipientCard({
-    logo = "LOGO",
-    name = "Давлет Эрмеков",
-    passportId = "12341564781",
-    inn = "12165498495",
+    logo = "",
+    first_name = "",
+    last_name = '',
+    email = "",
+    phone = "",
     address = "Республика Татарстан, г. Казань, ул. Галиаскара Камала, д. 41, офис 505а",
-    clientCode = "12165498495",
+    client_code = "",
 }) {
     return (
         <div className="recipient-card">
             <div className="recipient-logo">{logo}</div>
-            <div className="recipient-name">{name}</div>
+            <div className="recipient-name">{first_name} {last_name}</div>
 
             <div className="recipient-row">
-                <span className="recipient-label">ID паспорта:</span>{" "}
-                <span className="recipient-value">{passportId}</span>
+                <span className="recipient-label">email:</span>{" "}
+                <span className="recipient-value">{email}</span>
             </div>
             <div className="recipient-row">
-                <span className="recipient-label">ИНН:</span>{" "}
-                <span className="recipient-value">{inn}</span>
+                <span className="recipient-label">Тел номер:</span>{" "}
+                <span className="recipient-value">{phone}</span>
             </div>
             <div className="recipient-row">
                 <span className="recipient-label">Адрес:</span>{" "}
@@ -27,7 +28,7 @@ export default function RecipientCard({
             </div>
             <div className="recipient-row">
                 <span className="recipient-label">Клиентский код:</span>{" "}
-                <span className="recipient-value">{clientCode}</span>
+                <span className="recipient-value">{client_code}</span>
             </div>
         </div>
     );

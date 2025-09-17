@@ -1,10 +1,11 @@
 .order-list {
   padding: 20px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  min-width: 330px;
 }
 .order {
   display: grid;
-  grid-template-columns: 560px 1fr;
+  grid-template-columns: minmax(220px, 560px) 1fr;
 }
 
 .tabs {
@@ -38,7 +39,7 @@
   overflow: auto;
   gap: 20px;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  max-height: 600px;
+  max-height: calc(100vh - 280px);
   padding-right: 12px;
 }
 
@@ -62,6 +63,13 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 12px;
+}
+
+@media screen and (max-width: 768px) {
+  .cards {
+    height: 100%;
+    max-height: 100vh;
+  }
 }
 
 /* .order-flag {
@@ -97,7 +105,7 @@
 /* order.css */
 .ordform-container {
   max-width: 1296px;
-  max-height: 732px;
+  /* max-height: 732px; */
   top: 192px;
   margin: 0 auto;
   left: 67px;
@@ -123,7 +131,7 @@
 .ordform-group {
   display: flex;
   flex-direction: column;
-  width: 220px;
+  width: 100%;
 }
 
 .ordform-label {
@@ -141,7 +149,7 @@
   border: 1px solid #ddd;
   outline: none;
   transition: border-color 0.3s ease;
-  width: 100%;
+  width: calc(100% - 24px);
 }
 
 .ordform-input:focus,
@@ -222,6 +230,27 @@
   border-radius: 20px;
 }
 
+@media screen and (max-width: 1280px) {
+  .order_content {
+    padding: 18px;
+  }
+  .order-list {
+    padding: 8px;
+  }
+
+  .ordform-container {
+    padding: 12px 24px;
+    max-width: calc(100vw - 88px);
+    overflow-y: auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .order_content {
+    display: none;
+  }
+}
+
 .order_content_header {
 }
 .order_content_num {
@@ -232,10 +261,18 @@
   gap: 86px;
   padding: 60px 0;
 }
+
+@media screen and (max-width: 1400px) {
+  .actual_status {
+    flex-wrap: wrap;
+  }
+}
+
 .actual_status_right {
   width: 100%;
   display: flex;
   flex-direction: column;
+  max-width: 420px;
 }
 .actual_status_right_text {
   font-family: Unbounded;
@@ -417,10 +454,23 @@
 .contact-bottom_right {
 }
 
+@media screen and (max-width: 768px) {
+  .contact-bottom {
+    grid-template-columns: 1fr;
+  }
+  .contact-subtitle {
+    text-align: start;
+  }
+  .personal-info-form {
+    padding: 24px 12px;
+    max-width: calc(100vw - 68px);
+  }
+}
+
 .welcome {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background: #fa8688;
+  background: #ff4848;
   height: 100vh;
 }
 .welcome_left {
@@ -447,7 +497,7 @@
   gap: 12px;
 }
 .welcome_subtext {
-  color: #fa8688;
+  color: #ff4848;
 }
 .welcome_text {
 }
@@ -457,6 +507,19 @@
 .big_block {
   width: 100vw;
   height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.no_order {
+  font-family: Unbounded;
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;

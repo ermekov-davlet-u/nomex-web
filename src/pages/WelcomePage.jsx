@@ -9,7 +9,7 @@ export default function WelcomePage() {
     <div className="welcome">
       <div className="welcome_left">
         <div className="welcome_title">
-          Добро пожаловать <br /> в <span className="welcome_subtext">IC-SOLUTIONS</span>
+          Добро пожаловать <br /> в <span className="welcome_subtext">IK-SOLUTIONS</span>
         </div>
         <div className="welcome_text">
           Быстрая и надежная <br /> доставка из-за рубежа

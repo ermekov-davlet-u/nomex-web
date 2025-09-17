@@ -10,16 +10,25 @@ import "./pages.css";
 import { useGetOrdersQuery } from "../store/api/orderApi";
 import Slider from "../components/Slider";
 import { useGetCountriesQuery } from "../store/api/recipientApi";
+import { useTutorial } from "../hooks/useTutorial";
+import TutorialModal from "../components/TutorialModal";
+import QuestionHint from "../components/QuestionHint";
 
 
 const Country = () => {
   const [activeStatus, setActiveStatus] = useState(0);
   const { data: countries = [], error: countriesError, isLoading: isLoadingCountries } = useGetCountriesQuery();
-
+  const tutorial = useTutorial("tutorial_shown_country");
 
   return (
     <div className="country">
-      <div className="form-title">Добавьте свою информацию</div>
+      <TutorialModal
+        isOpen={tutorial.isOpen}
+        onClose={tutorial.onClose}
+        title="3 этап"
+        description="Здесь вы можете посмотреть список актуальных стран с адресом склада в стране нахождения а так же телефонным номером склада"
+      />
+      <div className="form-title">Добавьте свою информацию <QuestionHint text="Здесь должен быть текст с подсказкой Здесь должен быть текст с подсказкой Здесь должен быть текст с подсказкой" position="right" /></div>
       <div className="country-list">
         {
           countries.map(item => {

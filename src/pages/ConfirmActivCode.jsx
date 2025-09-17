@@ -39,12 +39,18 @@ export function ConfirmActivCode() {
 
     const handleCheckCode = async (enteredCode) => {
         try {
-            const { data } = await triggerCheckCode({ activationCode: enteredCode, email }).unwrap();
-            navigate(isResetPassword ? "/reset-password" : "/choose-role", {
-                state: {
-                    email: email
-                }
-            });
+            const data = await triggerCheckCode({ activationCode: enteredCode, email }).unwrap();
+            console.log(data);
+            if (data.success) {
+                navigate(isResetPassword ? "/reset-password" : "/login", {
+                    state: {
+                        email: email
+                    }
+                })
+            } else {
+                setCode(["", "", "", ""]);
+                inputsRef.current[0]?.focus();
+            }
         } catch (err) {
             setCode(["", "", "", ""]);
             inputsRef.current[0]?.focus();

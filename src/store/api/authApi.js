@@ -20,6 +20,27 @@ export const authApi = createApi({
                 body: { email, phone, password },
             }),
         }),
+        forgotPassword: builder.mutation({
+            query: ({ email }) => ({
+                url: '/app/auth/forgotPassword',
+                method: 'POST',
+                body: { email },
+            }),
+        }),
+        resetPassword: builder.mutation({
+            query: ({ email, password }) => ({
+                url: '/app/auth/resetPassword',
+                method: 'POST',
+                body: { email, password },
+            }),
+        }),
+        checkEmail: builder.mutation({
+            query: ({ email }) => ({
+                url: '/app/auth/check-email',
+                method: 'POST',
+                body: { email },
+            }),
+        }),
         checkActivationCode: builder.query({
             query: ({ activationCode, email }) => ({
                 url: "/app/auth/checkActivationCode",
@@ -37,4 +58,12 @@ export const authApi = createApi({
     }),
 });
 
-export const { useLoginMutation, useRegisterMutation, useLazyCheckActivationCodeQuery, useResendActivationCodeMutation } = authApi;
+export const {
+    useLoginMutation,
+    useRegisterMutation,
+    useLazyCheckActivationCodeQuery,
+    useResendActivationCodeMutation,
+    useResetPasswordMutation,
+    useCheckEmailMutation,
+    useForgotPasswordMutation
+} = authApi;

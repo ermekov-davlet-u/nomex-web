@@ -1,68 +1,85 @@
 import React, { useState } from "react";
 import "./pages.css"; // Стили для веба
 import { useGetStoresListQuery } from "../store/api/storeApi";
+import TextField from "../components/TextField";
+import Button from "../components/Button";
+import { Link } from "react-router-dom";
+import QuestionHint from "../components/QuestionHint";
 
 const Shops = () => {
-    const [inputValue, setInputValue] = useState("");
-    const [isModalVisible, setIsModalVisible] = useState(false);
-    const [selectedCountry, setSelectedCountry] = useState({
-        name: "Русский",
-        flag: "",
-    });
+  const [inputValue, setInputValue] = useState("");
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [selectedCountry, setSelectedCountry] = useState({
+    name: "Русский",
+    flag: "",
+  });
 
-    const { data: stores = [], isLoading } = useGetStoresListQuery();
+  const { data: stores = [], isLoading } = useGetStoresListQuery();
 
-    const handleSearch = () => {
-        console.log("Поиск:", inputValue);
-    };
+  const handleSearch = () => {
+    console.log("Поиск:", inputValue);
+  };
 
-    const handleLanguageSelect = (country) => setSelectedCountry(country);
+  const handleLanguageSelect = (country) => setSelectedCountry(country);
 
-    return (
-        <div className="shops-container">
-            <div className="header">
-                <h1>Лучшие магазины</h1>
-                <div className="search-bar">
-                    <input
-                        type="text"
-                        placeholder="Поиск..."
-                        value={inputValue}
-                        onChange={(e) => setInputValue(e.target.value)}
-                    />
-                    <button onClick={handleSearch}>Найти</button>
-                </div>
-                <button className="country-button" onClick={() => setIsModalVisible(true)}>
-                    <img src={selectedCountry.flag} alt="Страна" />
-                    <span>{selectedCountry.name}</span>
-                </button>
-            </div>
-
-            <div className="filter-row">
-                {["Фильтры", "Страна", "Категория", "Стоимость"].map((filter) => (
-                    <button key={filter} className="filter-btn" onClick={() => setIsModalVisible(true)}>
-                        {filter}
-                    </button>
-                ))}
-            </div>
-
-            <div className="store-grid">
-                {isLoading ? (
-                    <p>Загрузка...</p>
-                ) : (
-                    stores.map((store) => (
-                        <div className="store-card" key={store.id}>
-                            <img
-                                src={`https://api-onex.ibm.kg${store.flag}`}
-                                alt={store.name}
-                                className="store-logo"
-                            />
-                            <p className="store-name">{store.name}</p>
-                        </div>
-                    ))
-                )}
-            </div>
+  return (
+    <div
+      className="personal-info-form"
+      style={{
+        background: "transparent",
+        boxShadow: "none",
+        maxWidth: "100%",
+        display: "grid",
+        gridTemplateColumns: "1fr 317px",
+      }}
+    >
+      <div className="shop_left">
+        <div className="form-title shops_title">
+          Добавьте свою информацию{" "}
+          <QuestionHint
+            text="Здесь должен быть текст с подсказкой Здесь должен быть текст с подсказкой Здесь должен быть текст с подсказкой"
+            position="right"
+          />
         </div>
-    );
+        <div className="store-grid">
+          {isLoading ? (
+            <p>Загрузка...</p>
+          ) : (
+            stores.map((store) => (
+              <div className="store-card" key={store.id}>
+                <div className="store-card_top">
+                  <div className="store-card_price">$ 180.70</div>
+                  <div className="store-card_status"></div>
+                </div>
+                <img
+                  src={`/shop.png`}
+                  alt={store.name}
+                  className="store-logo"
+                />
+                <p className="store-name">{store.name}</p>
+              </div>
+            ))
+          )}
+        </div>
+      </div>
+      <div className="shop_right">
+        <div className="form-title shops_title">Фильтры:</div>
+        <TextField label={"Категории:"}></TextField>
+        <TextField label={"Страны:"}></TextField>
+        <br />
+        <Button>Применить</Button>
+        <div className="login-form_bottom_text">
+          <div
+            to={"/register"}
+            className="register"
+            style={{ fontWeight: 200 }}
+          >
+            Очистить
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Shops;

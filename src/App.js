@@ -27,8 +27,13 @@ import Country from "./pages/Country";
 import WelcomePage from "./pages/WelcomePage";
 
 import "./App.css";
+import ResetPassword from "./pages/ResetPassword";
+import { useState } from "react";
 
 function App() {
+
+  const [menu, setMenu] = useState(false);
+
   return (
     <BrowserRouter>
       <AuthProvider>
@@ -39,6 +44,7 @@ function App() {
           <Route path="/register" element={<RegisterForm />} />
           <Route path="/confirm-code" element={<ConfirmActivCode />} />
           <Route path="/choose-role" element={<ChooseFizUr />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           <Route
             path="/personal-info"
             element={<PersonalInfoDetailWeb />}
@@ -48,13 +54,14 @@ function App() {
             path="*"
             element={
               <div className="layout">
-                <Sidebar />
+                <Sidebar menu={menu} setMenu={setMenu} />
                 <main className="content">
-                  <Header />
+                  <Header setMenu={setMenu} />
                   <Routes>
                     <Route path="/login" element={<Login />} />
                     <Route path="/home" element={<Home />} />
                     <Route path="/register" element={<RegisterForm />} />
+
                     <Route
                       path="/orders"
                       element={

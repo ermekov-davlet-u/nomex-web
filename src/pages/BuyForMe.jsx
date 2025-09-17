@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useGetCountriesQuery, useGetRecipientsQuery } from "../store/api/recipientApi";
+import { useGetCountriesQuery, useGetCurrenciesQuery, useGetRecipientsQuery } from "../store/api/recipientApi";
 import { useSubmitBuyForMeMutation } from "../store/api/buyForMeApi";
 import { FaPlus, FaTrash } from "react-icons/fa";
 import SelectField from "../components/MySelect";
 import TextField from "../components/TextField";
 import Button from "../components/Button";
 import "./pages.css"
+import { useTutorial } from "../hooks/useTutorial";
+import TutorialModal from "../components/TutorialModal";
 
 const BuyForMeForm = () => {
     const [formData, setFormData] = useState({
@@ -35,9 +37,11 @@ const BuyForMeForm = () => {
     });
 
     const [errors, setErrors] = useState({});
-
+    const tutorial = useTutorial("tutorial_shown_buyforme");
     const { data: recipients, error: recipientsError, isLoading: isLoadingRecipients } = useGetRecipientsQuery();
     const { data: countries, error: countriesError, isLoading: isLoadingCountries } = useGetCountriesQuery();
+    const { data: currency, error: currencyError, isLoading: isLoadingCurrency } = useGetCurrenciesQuery();
+
     const [submitBuyForMe, { isLoading: isSubmitting, isError }] = useSubmitBuyForMeMutation();
 
     const validateForm = () => {
@@ -49,7 +53,8 @@ const BuyForMeForm = () => {
                     link: item.link.trim() === "",
                     price: item.price === "",
                     amount: item.amount === "",
-                    selectedCurrency: !formData.selectedReciever,
+                    selectedCurrency: !formData.selectedCurrency,
+                    selectedReciever: !formData.selectedReciever,
                     selectedCountry: !formData.selectedCountry,
                 };
                 if (Object.values(itemErrors).some(Boolean)) {
@@ -189,7 +194,12 @@ const BuyForMeForm = () => {
 
     return (
         <div style={styles.container} className="buy_for">
-
+            <TutorialModal
+                isOpen={tutorial.isOpen}
+                onClose={tutorial.onClose}
+                title="6 этап"
+                description="Здесь вы можете создать заказ более подробное описание, мы так же можем предложить вам посмотреть видео гайд для быстрого создания заказа"
+            />
             <div className="buy_top">
                 <div className="ordform-group">
                     {isLoadingRecipients ? (
@@ -203,10 +213,18 @@ const BuyForMeForm = () => {
                             value={formData.selectedReciever}
                             onChange={handleInputChange}
                             placeholder="Выберите получателя"
-                            options={recipients.map((r) => ({
-                                value: r.guid,
-                                label: r.name,
-                            }))}
+                            options={recipients.map((r, i) => {
+                                if (i == 0 && (r.name == " " || !r.name == "")) {
+                                    return {
+                                        value: r.guid,
+                                        label: "Я",
+                                    }
+                                }
+                                return {
+                                    value: r.guid,
+                                    label: r.name,
+                                }
+                            })}
                             defaultValue=""
                         />
                     )}
@@ -255,11 +273,25 @@ const BuyForMeForm = () => {
                             onChange={(e) => handleListChange(item.id, "price", e.target.value)}
                         />
 
+                        {currency?.length && <SelectField
+                            // label="Страна"
+                            name="selectedCurrency"
+                            value={formData.selectedCurrency}
+                            onChange={handleInputChange}
+                            placeholder="Выберите валюту"
+                            options={currency.map((c) => ({
+                                value: c.guid,
+                                label: c.name,
+                            }))}
+                            defaultValue=""
+                        />}
+
                         <TextField
                             placeholder="Количество"
                             value={item.amount}
                             onChange={(e) => handleListChange(item.id, "amount", e.target.value)}
                         />
+
 
                         {/* <TextField
                             placeholder="Размер"

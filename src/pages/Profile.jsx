@@ -34,7 +34,7 @@ const ProfilePage = () => {
 
             <div className="profile-options">
                 {/* <ProfileOption icon={<IoPersonOutline />} label="Личная информация" /> */}
-                <ProfileOption icon={<IoKeyOutline />} label="Изменить пароль" />
+                {/* <ProfileOption icon={<IoKeyOutline />} label="Изменить пароль" /> */}
                 <ProfileOption icon={<IoPeopleOutline />} label="Купить вместо меня" onClick={() => navigate("/BuyForMeForm")} />
                 <ProfileOption icon={<IoPeopleOutline />} label="Получатели" onClick={() => navigate("/recipient")} />
                 <ProfileOption icon={<IoRibbonOutline />} label="Заполнить персональные данные" onClick={() => navigate("/personal-info")} />

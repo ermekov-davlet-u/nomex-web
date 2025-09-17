@@ -12,7 +12,7 @@ export default function TextField({
     name
 }) {
     return (
-        <div className={`text-field_form-group ${error ? "error" : ""}`}>
+        <div className={`text-field_form-group ${error ? "error_text" : ""}`}>
             {label && (
                 <label className="text-field_label">
                     {icon && <span style={{ marginRight: "8px" }}>{icon}</span>}

@@ -14,9 +14,11 @@ export const orderApi = createApi({
 			return headers;
 		},
 	}),
+	tagTypes: ["order"],
 	endpoints: (builder) => ({
 		getOrders: builder.query({
-			query: (status) => `/orderList?status=${status || 0}`,
+			query: (status) => `/orderList?status=${status}`,
+			providesTags: ["order"],
 		}),
 		createOrEditOrder: builder.mutation({
 			query: (formData) => ({
@@ -24,12 +26,14 @@ export const orderApi = createApi({
 				method: "POST",
 				body: formData,
 			}),
+			invalidatesTags: ["order"],
 		}),
 		issueOrder: builder.mutation({
 			query: ({ orderId }) => ({
 				url: `/api/app/order/issue/${orderId}`,
 				method: "POST",
 			}),
+			invalidatesTags: ["order"],
 		}),
 	}),
 });

@@ -5,6 +5,9 @@ import { API_BASE_URL } from "../config";
 import TextField from "../components/TextField";
 import SelectField from "../components/MySelect";
 import Button from "../components/Button";
+import TutorialModal from "../components/TutorialModal";
+import { useTutorial } from "../hooks/useTutorial";
+import QuestionHint from "../components/QuestionHint";
 
 
 const Calculator = () => {
@@ -16,6 +19,7 @@ const Calculator = () => {
     const [dimensions, setDimensions] = useState({ length: "", width: "", height: "" });
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [selectedCountry, setSelectedCountry] = useState();
+    const tutorial = useTutorial("tutorial_shown_calc");
 
     const handleSelectedTab = (key) => {
         setSelectedTab(key);
@@ -30,7 +34,13 @@ const Calculator = () => {
 
     return (
         <div className="personal-info-form">
-            <h2 className="form-title">Калькулятор: (?)</h2>
+            <TutorialModal
+                isOpen={tutorial.isOpen}
+                onClose={tutorial.onClose}
+                title="8 этап"
+                description="Здесь вы можете рассчитать предварительную стоимость доставки"
+            />
+            <h2 className="form-title">Калькулятор <QuestionHint text="Здесь должен быть текст с подсказкой Здесь должен быть текст с подсказкой Здесь должен быть текст с подсказкой" position="right" /></h2>
 
             <div className="personal-info_content">
                 {isModalVisible && (
@@ -80,7 +90,7 @@ const Calculator = () => {
                     value={selectedCountry?.guid || ""}
                     onChange={handleCountrySelect}
                     placeholder="Выберите страну"
-                    options={countries.map((country) => ({
+                    options={Array.isArray(countries) ? [...countries].map((country) => ({
                         value: country.guid,
                         label: (
                             <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
@@ -92,7 +102,7 @@ const Calculator = () => {
                                 <span>{country.country}</span>
                             </div>
                         ),
-                    }))}
+                    })) : []}
                 />
 
                 <TextField

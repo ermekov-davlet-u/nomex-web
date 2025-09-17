@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { logout } from "../store/slice/authSlice";
+import { resetStore } from "../store";
 
 
 export const useAuth = () => {
@@ -26,6 +27,9 @@ export const useAuth = () => {
 export function handleLogout(dispatch, navigate) {
   localStorage.removeItem("accessToken");
   localStorage.removeItem("refreshToken");
-  dispatch(logout());
+
+  dispatch(logout());       // сброс authSlice
+  dispatch(resetStore());   // сброс ВСЕГО Redux состояния
+
   navigate("/login");
 }

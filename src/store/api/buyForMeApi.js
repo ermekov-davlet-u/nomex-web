@@ -5,7 +5,7 @@ import { API_BASE_URL } from '../../config';
 export const buyForMeApi = createApi({
     reducerPath: 'buyForMeApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: API_BASE_URL,
+        baseUrl: API_BASE_URL + "/api/app/invoice",
         prepareHeaders: (headers, { getState }) => {
             const token = localStorage.getItem("accessToken");
             if (token) {
@@ -17,7 +17,7 @@ export const buyForMeApi = createApi({
     endpoints: (builder) => ({
         submitBuyForMe: builder.mutation({
             query: (data) => ({
-                url: '/api/app/invoice/createBuyForMe',
+                url: '/createBuyForMe',
                 method: 'POST',
                 body: data,
             }),
