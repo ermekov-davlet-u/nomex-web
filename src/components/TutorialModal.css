@@ -50,6 +50,14 @@
   background-color: #f4f5fa;
   border: 1px solid #ff4848;
   border-radius: 20px;
+  display: grid;
+  grid-template-rows: 48px 1fr;
+}
+
+.notification_conent {
+  /* display: flex; */
+  overflow: auto;
+  height: 100%;
 }
 
 .tutorial-modal h2 {
@@ -116,4 +124,33 @@
   padding: 4px 8px;
   color: white;
   background-color: #ff4848;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.payment_circle_btn {
+  width: 37px;
+  height: 37px;
+  top: 475px;
+  left: 1178px;
+  border-radius: 20px;
+  angle: 0 deg;
+  opacity: 1;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  background-color: #ff4848;
+}
+.balance_pament_content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
 }

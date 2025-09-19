@@ -8,7 +8,7 @@ const OrderCard = ({ order, onClick }) => {
 
     const [deliverRussia, setDeliverRussia] = useState(null);
     useEffect(() => {
-        if (order?.tracking_number) {
+        if (order?.tracking_number && order?.status == 24) {
             async function fetchTrack() {
                 const a = await getTrackStatus(order.tracking_number);
                 if (a.statuses) setDeliverRussia(a.statuses);
@@ -62,10 +62,15 @@ const OrderCard = ({ order, onClick }) => {
                     </div>
                 </div>
             </div>
+            <div className="order-card_footer">
+                <div className="order-card_reciever">
+                    <div className="order-card_reciever_title">Получатель</div>
+                    <div className="order-card_reciever_fio">{order.recipient}</div>
+                </div>
 
-            <div className="order-card_reciever">
-                <div className="order-card_reciever_title">Получатель</div>
-                <div className="order-card_reciever_fio">{order.recipient}</div>
+                <div className="order-card_reciever">
+                    <div className="order-card_reciever_fio">{order?.payment_guid ? "Оплачено" : "Ждет оплаты"}</div>
+                </div>
             </div>
         </div>
     );

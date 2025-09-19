@@ -1338,6 +1338,13 @@ h2 {
 .order-card_reciever_fio {
 }
 
+.order-card_footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+}
+
 .buy_top {
   display: flex;
   flex-wrap: wrap;
@@ -1351,6 +1358,7 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 32px;
+  overflow: auto;
 }
 
 .buy_for_form_group {

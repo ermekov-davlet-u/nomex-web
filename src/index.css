@@ -16,6 +16,8 @@ code {
   padding: 60px;
   flex-grow: 1;
   max-height: calc(100vh - 168px);
+  display: grid;
+  grid-template-rows: 68px 1fr;
   /* overflow: scroll; */
 }
 

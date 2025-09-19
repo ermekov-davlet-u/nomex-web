@@ -6,6 +6,7 @@
 .order {
   display: grid;
   grid-template-columns: minmax(220px, 560px) 1fr;
+  overflow: auto;
 }
 
 .tabs {
@@ -112,6 +113,8 @@
   border-radius: 20px;
   background-color: white;
   padding: 60px 32px;
+  overflow: auto;
+  /* height: 80vh; */
 }
 
 .ordform-header {
@@ -131,7 +134,7 @@
 .ordform-group {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 220px;
 }
 
 .ordform-label {
@@ -236,6 +239,9 @@
   }
   .order-list {
     padding: 8px;
+    display: grid;
+    grid-template-rows: 68px 1fr;
+    overflow: auto;
   }
 
   .ordform-container {
@@ -248,6 +254,19 @@
 @media screen and (max-width: 768px) {
   .order_content {
     display: none;
+  }
+  .ordform-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .ordform-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
   }
 }
 

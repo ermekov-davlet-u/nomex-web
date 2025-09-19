@@ -31,6 +31,7 @@ const Shops = () => {
         maxWidth: "100%",
         display: "grid",
         gridTemplateColumns: "1fr 317px",
+        width: "100%"
       }}
     >
       <div className="shop_left">

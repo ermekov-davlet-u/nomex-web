@@ -6,6 +6,8 @@ export default function Button({
     type = "button",
     className = "",
     disabled = false,
+    style,
+    ...param
 }) {
     return (
         <button
@@ -13,6 +15,8 @@ export default function Button({
             onClick={onClick}
             disabled={disabled}
             className={`btn submit-button ${className}`}
+            style={style}
+            {...param}
         >
             {children}
         </button>
