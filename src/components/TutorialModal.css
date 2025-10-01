@@ -48,7 +48,7 @@
   border-radius: 20px;
   border-width: 1px;
   background-color: #f4f5fa;
-  border: 1px solid #ff4848;
+  border: 1px solid #103d64;
   border-radius: 20px;
   display: grid;
   grid-template-rows: 48px 1fr;
@@ -88,7 +88,7 @@
   text-decoration: underline;
   text-decoration-style: solid;
   text-decoration-offset: 0%;
-  color: #ff4848;
+  color: #103d64;
   text-decoration-thickness: 0%;
 }
 
@@ -123,7 +123,7 @@
   border-radius: 5px;
   padding: 4px 8px;
   color: white;
-  background-color: #ff4848;
+  background-color: #103d64;
   border: none;
   outline: none;
   display: flex;
@@ -146,7 +146,7 @@
   justify-content: center;
   color: white;
   font-size: 24px;
-  background-color: #ff4848;
+  background-color: #103d64;
 }
 .balance_pament_content {
   display: flex;

@@ -1,1 +1,1 @@
-export const API_BASE_URL = "https://api-onex.ibm.kg";
+export const API_BASE_URL = "https://onza-api.ibm.kg";

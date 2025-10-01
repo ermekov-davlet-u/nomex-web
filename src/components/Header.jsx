@@ -96,12 +96,12 @@ const Header = ({ setMenu }) => {
             value={"Баланс: 500"}
             readOnly
           />
-          <Button
+          {/* <Button
             style={{ height: 36, padding: "1px 2rem", margin: 0 }}
             onClick={() => setOpenPayment(true)}
           >
             Пополнить
-          </Button>
+          </Button> */}
           <div className="header__icons">
             <li
               to="/notifications"

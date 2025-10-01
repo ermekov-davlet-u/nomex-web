@@ -15,7 +15,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: center;
-  background-color: #ff4848;
+  background-color: #103d64;
   align-items: center;
   padding-left: 12px;
 }
@@ -288,10 +288,9 @@ body {
 }
 /* Стили для списка получателей */
 .recipient-list {
-  max-width: 1296px;
-  max-height: 732px;
-  top: 192px;
-  left: 67px;
+  /* max-width: 1296px; */
+  /* max-height: 732px; */
+
   border-radius: 20px;
   padding: 60px 32px;
   background-color: white;
@@ -329,7 +328,8 @@ body {
     grid-template-columns: 1fr;
   }
   .recipient-list {
-    padding: 24px 18px;
+    padding: 12px 8px;
+    width: 100%;
   }
 }
 
@@ -744,7 +744,7 @@ h2 {
 }
 
 .submit-button {
-  background: #ff4848;
+  background: #103d64;
   border: none;
   color: white;
   padding: 16px 64px;
@@ -861,7 +861,7 @@ h2 {
 
 .sidebar-li:hover {
   color: white;
-  background-color: #ff4848;
+  background-color: #103d64;
   border-radius: 20px;
 }
 
@@ -881,7 +881,7 @@ h2 {
 
 .sidebar-li_active {
   color: white;
-  background-color: #ff4848;
+  background-color: #103d64;
   border-radius: 20px;
 }
 
@@ -892,7 +892,7 @@ h2 {
 
 .filter-btn {
   padding: 8px 16px;
-  border: 1px solid #ff4848;
+  border: 1px solid #103d64;
   border-radius: 20px;
   background: transparent;
   cursor: pointer;
@@ -903,9 +903,9 @@ h2 {
 .filter-btn:active,
 .filter-btn:hover {
   padding: 8px 16px;
-  border: 1px solid #ff4848;
+  border: 1px solid #103d64;
   border-radius: 20px;
-  background: #ff4848;
+  background: #103d64;
   cursor: pointer;
   color: #ffffff;
 }
@@ -1289,7 +1289,7 @@ h2 {
 }
 .order-card_status {
   padding: 4px 16px;
-  background-color: #ff4848;
+  background-color: #103d64;
   padding-top: 0;
   color: white;
   border-radius: 14px;
@@ -1379,7 +1379,7 @@ h2 {
   background-color: transparent;
   outline: none;
   border: none;
-  color: #ff4848;
+  color: #103d64;
   cursor: pointer;
 }
 
