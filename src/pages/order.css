@@ -409,6 +409,10 @@
   flex-wrap: wrap;
   gap: 48px;
   padding-top: 48px;
+  height: 100%;          /* занимает максимум */
+  max-height: calc(100vh - 80px - 60px);     /* не выше экрана */
+  overflow-y: auto;      /* вертикальный скролл */
+  box-sizing: border-box; /* учитываем padding в высоте */
 }
 
 .warehouse-card {
